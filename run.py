@@ -255,6 +255,8 @@ while True:
         print("Invalid input! Please try again.. \
         If you are a student - type Y , if not - type N")
         continue
+    break
+while True:
 
     # ask the user for the age over 18
     is_over_18_years = str(input("Are you over 18? (Y/N): ")).upper()
@@ -262,7 +264,8 @@ while True:
         print("Invalid input! Please try again.. \
            If you are over 18 years of age - type Y, if not - type N")
         continue
-
+    break
+while True:
     # if the under 18, skip to ask for before 1962 option
     if is_over_18_years == "Y":
         # ask the user for the born before 1962
@@ -272,7 +275,8 @@ while True:
             print("Invalid input! Please try again.. \
            if you were born before 1962 - type Y , if not - type N")
             continue
-
+    break
+while True:
     # ask the user for the civil status
     civil_status = str(
         input("Are you single, married or parent? (S/M/P): ")).upper()
@@ -281,7 +285,8 @@ while True:
         if your status is Single - type S , \
         if Married - type M , if Parent - type P")
         continue
-
+    break
+while True:
     # ask the user for the income
     try:
         income = float(input("Enter your income: "))
@@ -290,13 +295,17 @@ while True:
             "Invalid input! Please try again by entering your income.\
              Do not include special characters")
         continue
+    break
+while True:
     if isinstance(income, float) or isinstance(income, int):
 
         # income value validation
         if income <= 0:
             print("Income should be greater than 0. Please try again.")
-            continue
+        continue
+    break
 
+while True:
         # create an instance of the class based on the user input
         if civil_status == "S":
             instance = SingleTaxCalculator(income)
@@ -323,6 +332,7 @@ while True:
                 print(
                     "Invalid input! Please try again, by either type Y or N.")
                 continue
+
             if continue_input == "N":
                 # terminate the program
                 print(f"Thank you for using this app, {user_name}!")
