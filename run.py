@@ -306,42 +306,42 @@ while True:
     break
 
 while True:
-        # create an instance of the class based on the user input
-        if civil_status == "S":
-            instance = SingleTaxCalculator(income)
-        elif civil_status == "M":
-            instance = MarriedTaxCalculator(income)
-        elif civil_status == "P":
-            instance = ParentTaxCalculator(income)
-        if instance:
+    # create an instance of the class based on the user input
+    if civil_status == "S":
+        instance = SingleTaxCalculator(income)
+    elif civil_status == "M":
+        instance = MarriedTaxCalculator(income)
+    elif civil_status == "P":
+        instance = ParentTaxCalculator(income)
+    if instance:
 
-            # calculate the tax for the user
-            instance.calculate_tax()
+        # calculate the tax for the user
+        instance.calculate_tax()
 
-            # calculate the net income for the user
-            instance.calculate_net_income()
+        # calculate the net income for the user
+        instance.calculate_net_income()
 
-            # print the results
-            instance.display_data()
+        # print the results
+        instance.display_data()
 
-            # Want to continue?
-            continue_input = str(
-                input(
-                    "Would you like to calculate other salary?(Y/N):")).upper()
-            if not is_valid_input(continue_input, "YN"):
-                print(
-                    "Invalid input! Please try again, by either type Y or N.")
-                continue
-
-            if continue_input == "N":
-                # terminate the program
-                print(f"Thank you for using this app, {user_name}!")
-                break
-            else:
-                # continue the program
-                print("\n\n")
-                continue
-        else:
-            # if there is an unexpected error in the input
-            print("Oops! Something went wrong..")
+        # Want to continue?
+        continue_input = str(
+            input(
+                "Would you like to calculate other salary?(Y/N):")).upper()
+        if not is_valid_input(continue_input, "YN"):
+            print(
+                "Invalid input! Please try again, by either type Y or N.")
             continue
+
+        if continue_input == "N":
+            # terminate the program
+            print(f"Thank you for using this app, {user_name}!")
+            break
+        else:
+            # continue the program - OK
+            print("\n\n")
+            continue
+    else:
+        # if there is an unexpected error in the input
+        print("Oops! Something went wrong..")
+        continue
