@@ -1,4 +1,3 @@
-
 def is_valid_input(input_string, input_type):
     """
     this method is used to check if the input is
@@ -15,6 +14,14 @@ def is_valid_input(input_string, input_type):
             return True
         else:
             return False
+
+
+def validate_name(name):
+    # scan number and special character
+    if name.replace(" ", "").isalpha():
+        return True
+    else:
+        return False
 
 
 class TaxCalculator:
