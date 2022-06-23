@@ -216,6 +216,8 @@ class SingleTaxCalculator(TaxCalculator):
         self.net_income_yearly = self.income - self.yearly_tax
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
+
+
 # welcome message , description of the app
 
 
