@@ -1,1 +1,1 @@
-# Your requirements go here
+prettytable==3.3.0
