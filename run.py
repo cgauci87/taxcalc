@@ -1,3 +1,4 @@
+
 def is_valid_input(input_string, input_type):
     """
     this method is used to check if the input is
