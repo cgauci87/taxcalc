@@ -216,8 +216,7 @@ class SingleTaxCalculator(TaxCalculator):
         self.net_income_yearly = self.income - self.yearly_tax
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
-
-    # welcome message , description of the app
+# welcome message , description of the app
 
 
 print(
@@ -281,63 +280,52 @@ while True:
         if Married - type M , if Parent - type P"
         )
         continue
-    break
-while True:
+
     # ask the user for the income
     try:
         income = float(input("Enter your income: "))
     except ValueError:
-        print(
-            "Invalid input! Please try again by entering your income.\
-             Do not include special characters"
-        )
+        print("Invalid input! Please try again by entering your income.")
         continue
-    break
-while True:
     if isinstance(income, float) or isinstance(income, int):
 
         # income value validation
         if income <= 0:
             print("Income should be greater than 0. Please try again.")
-        continue
-    break
-
-while True:
-    # create an instance of the class based on the user input
-    if civil_status == "S":
-        instance = SingleTaxCalculator(income)
-    elif civil_status == "M":
-        instance = MarriedTaxCalculator(income)
-    elif civil_status == "P":
-        instance = ParentTaxCalculator(income)
-    if instance:
-
-        # calculate the tax for the user
-        instance.calculate_tax()
-
-        # calculate the net income for the user
-        instance.calculate_net_income()
-
-        # print the results
-        instance.display_data()
-
-        # Want to continue?
-        continue_input = str(
-            input("Would you like to calculate other salary?(Y/N):")
-        ).upper()
-        if not is_valid_input(continue_input, "YN"):
-            print("Invalid input! Please try again, by either type Y or N.")
             continue
 
-        if continue_input == "N":
-            # terminate the program
-            print(f"Thank you for using this app, {user_name}!")
-            break
+        # create an instance of the class based on the user input
+        if civil_status == "S":
+            instance = SingleTaxCalculator(income)
+        elif civil_status == "M":
+            instance = MarriedTaxCalculator(income)
+        elif civil_status == "P":
+            instance = ParentTaxCalculator(income)
+        if instance:
+
+            # calculate the tax for the user
+            instance.calculate_tax()
+
+            # calculate the net income for the user
+            instance.calculate_net_income()
+
+            # print the results
+            instance.display_data(user_name)
+
+            # Want to continue?
+            continue_input = str(input("Do you want to continue? (Y/N): ")).upper()
+            if not is_valid_input(continue_input, "YN"):
+                print("Invalid input! Please try again by either type Y or N.")
+                continue
+            if continue_input == "N":
+                # terminate the program
+                print(f"Thank you for using this program, {user_name}!")
+                break
+            else:
+                # continue the program
+                print("\n\n")
+                continue
         else:
-            # continue the program - OK
-            print("\n\n")
+            # if there is an unexpected error in the input
+            print("Something went wrong!")
             continue
-    else:
-        # if there is an unexpected error in the input
-        print("Oops! Something went wrong..")
-        continue
