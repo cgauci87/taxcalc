@@ -1,11 +1,9 @@
-from prettytable import PrettyTable
-
 
 def is_valid_input(input_string, input_type):
     """
     this method is used to check if the input is
     valid Either it is Y/N (for yes/no)
-    OR SMP (for single/married/parent)
+    OR SMP (for single/married/parient)
      """
     if input_type == "YN":
         if input_string == "Y" or input_string == "N":
@@ -17,14 +15,6 @@ def is_valid_input(input_string, input_type):
             return True
         else:
             return False
-
-
-def validate_name(name):
-    # scan number and special character
-    if name.replace(" ", "").isalpha():
-        return True
-    else:
-        return False
 
 
 class TaxCalculator:
@@ -59,24 +49,26 @@ class TaxCalculator:
         """
         pass
 
-    def display_data(self):
+    def display_data(self, user_name):
         """
         This method is used to display the data for the user
         """
-        x = PrettyTable()
-        x.field_names = ["x", "Weekly", "Monthly", "Yearly"]
-        x.add_row(
-            ["Gross Salary", f"€{round(self.income / 52, 2)}",
-             f"€{round(self.income / 12, 2)}", f"€{self.income}"])
-        x.add_row(["Tax", f"€{self.weekly_tax}", f"€{self.monthly_tax}",
-                   f"€{self.yearly_tax}"])
-        x.add_row(["COLA/Bonus", f"€{self.cola_bonus_weekly}**",
-                   f"€{self.cola_bonus_monthly}**",
-                   f"€{self.cola_bonus_yearly}**"])
-        x.add_row(
-            ["Net Salary", f"€{self.net_income_weekly}",
-             f"€{self.net_income_monthly}", f"€{self.net_income_yearly}"])
-        print(x)
+        print(
+            f"\nGross Salary Breakdown for {user_name} is:")
+        print(
+            f"\t\t\t\t\tWeekly\t\t\t\tMonthly\t\t\t\tYearly")
+        print(
+            f"Gross Salary: \t\t€{round(self.income/52,2)}\t\t\t\t€ \
+            {round(self.income/12,2)}\t\t\t\t€{self.income}")
+        print(
+            f"Tax: \t\t\t\t€{self.weekly_tax}\t\t\t\t€ \
+            {self.monthly_tax}\t\t\t\t€{self.yearly_tax}")
+        print(
+            f"COLA/Bonus: \t\t€{self.cola_bonus_weekly}**\t\t\t\t€ \
+            {self.cola_bonus_monthly}**\t\t\t€{self.cola_bonus_yearly}**")
+        print(
+            f"Net Salary: \t\t€{self.net_income_weekly}\t\t\t\t€ \
+            {self.net_income_monthly}\t\t\t€{self.net_income_yearly}")
 
 
 class ParentTaxCalculator(TaxCalculator):
@@ -86,10 +78,9 @@ class ParentTaxCalculator(TaxCalculator):
     with civil status parent
     """
 
-    def __init__(self, income_):
+    def __init__(self, income):
         """ default values for the class """
-        super().__init__()
-        self.income = income_
+        self.income = income
         self.cola_bonus_weekly = 9.86
         self.cola_bonus_monthly = 42.71
         self.cola_bonus_yearly = 512.52
@@ -102,20 +93,20 @@ class ParentTaxCalculator(TaxCalculator):
             self.tax = 0
 
         # 15% tax for income between 10501 - €15800
-        elif 10501 <= self.income <= 15800:
-            self.tax = (self.income * 15 / 100) - 1575
+        elif self.income >= 10501 and self.income <= 15800:
+            self.tax = ((self.income) * 15 / 100) - 1575
 
         # 25% tax for income between 15801 - €21200
-        elif 15801 <= self.income <= 21200:
-            self.tax = (self.income * 25 / 100) - 3155
+        elif self.income >= 15801 and self.income <= 21200:
+            self.tax = ((self.income) * 25 / 100) - 3155
 
         # 25% tax for income between 21201 - €60000
-        elif 21201 <= self.income <= 60000:
-            self.tax = (self.income * 25 / 100) - 3050
+        elif self.income >= 21201 and self.income <= 60000:
+            self.tax = ((self.income) * 25 / 100) - 3050
 
         # 35% tax for income above €60000
         elif self.income > 60000:
-            self.tax = (self.income * 35 / 100) - 9050
+            self.tax = ((self.income) * 35 / 100) - 9050
 
         self.weekly_tax = round((self.tax / 52), 2)
         self.monthly_tax = round((self.tax / 12), 2)
@@ -124,9 +115,8 @@ class ParentTaxCalculator(TaxCalculator):
     def calculate_net_income(self):
         """ calculate the net income for the user with civil status parent """
         self.net_income_yearly = self.income - self.yearly_tax
-        self.net_income_monthly = round(self.net_income_yearly / 12, 2)
-        self.net_income_weekly = round(self.net_income_yearly / 52, 2)
-        self.net_income_yearly = round(self.net_income_yearly, 2)
+        self.net_income_monthly = round(self.net_income_yearly/12, 2)
+        self.net_income_weekly = round(self.net_income_yearly/52, 2)
 
 
 class MarriedTaxCalculator(TaxCalculator):
@@ -136,10 +126,9 @@ class MarriedTaxCalculator(TaxCalculator):
     with civil status married
     """
 
-    def __init__(self, income_):
+    def __init__(self, income):
         """ default values for the class """
-        super().__init__()
-        self.income = income_
+        self.income = income
         self.cola_bonus_weekly = 9.86
         self.cola_bonus_monthly = 42.71
         self.cola_bonus_yearly = 512.52
@@ -153,20 +142,20 @@ class MarriedTaxCalculator(TaxCalculator):
             self.tax = 0
 
         # 15% tax for income between 12701 - €21200
-        elif 12701 <= self.income <= 21200:
-            self.tax = (self.income * 15 / 100) - 1905
+        elif self.income >= 12701 and self.income <= 21200:
+            self.tax = ((self.income) * 15 / 100) - 1905
 
         # 25% tax for income between 21201 - €28700
-        elif 21201 <= self.income <= 28700:
-            self.tax = (self.income * 25 / 100) - 4025
+        elif self.income >= 21201 and self.income <= 28700:
+            self.tax = ((self.income) * 25 / 100) - 4025
 
         # 25% tax for income between 28701 - €60000
-        elif 28701 <= self.income <= 60000:
-            self.tax = (self.income * 25 / 100) - 3905
+        elif self.income >= 28701 and self.income <= 60000:
+            self.tax = ((self.income) * 25 / 100) - 3905
 
         # 35% tax for income above €60000
         elif income > 60000:
-            self.tax = (self.income * 35 / 100) - 9905
+            self.tax = ((self.income) * 35 / 100) - 9905
 
         self.weekly_tax = round((self.tax / 52), 2)
         self.monthly_tax = round((self.tax / 12), 2)
@@ -175,8 +164,8 @@ class MarriedTaxCalculator(TaxCalculator):
     def calculate_net_income(self):
         """ calculate the net income for the user with civil status married """
         self.net_income_yearly = self.income - self.yearly_tax
-        self.net_income_monthly = round(self.net_income_yearly / 12, 2)
-        self.net_income_weekly = round(self.net_income_yearly / 52, 2)
+        self.net_income_monthly = round(self.net_income_yearly/12, 2)
+        self.net_income_weekly = round(self.net_income_yearly/52, 2)
 
 
 class SingleTaxCalculator(TaxCalculator):
@@ -186,10 +175,9 @@ class SingleTaxCalculator(TaxCalculator):
     with civil status single
     """
 
-    def __init__(self, income_):
+    def __init__(self, income):
         """ default values for the class """
-        super().__init__()
-        self.income = income_
+        self.income = income
         self.cola_bonus_weekly = 9.86
         self.cola_bonus_monthly = 42.71
         self.cola_bonus_yearly = 512.52
@@ -203,20 +191,20 @@ class SingleTaxCalculator(TaxCalculator):
             self.tax = 0
 
         # 15% tax for income between 9101 - €14500
-        elif 9100 < self.income <= 14500:
-            self.tax = (self.income * 15 / 100) - 1365
+        elif self.income > 9100 and self.income <= 14500:
+            self.tax = ((self.income) * 15 / 100) - 1365
 
         # 25% tax for income between 14501 - €19500
-        elif 14500 < self.income <= 19500:
-            self.tax = (self.income * 25 / 100) - 2815
+        elif self.income > 14500 and self.income <= 19500:
+            self.tax = ((self.income) * 25 / 100) - 2815
 
         # 25% tax for income between 19501 - €60000
-        elif 19500 < self.income <= 60000:
-            self.tax = (self.income * 25 / 100) - 2725
+        elif self.income > 19500 and self.income <= 60000:
+            self.tax = ((self.income) * 25 / 100) - 2725
 
         # 35% tax for income above €60000
         elif self.income > 60000:
-            self.tax = (self.income * 35 / 100) - 8725
+            self.tax = ((self.income) * 35 / 100) - 8725
 
         self.weekly_tax = round((self.tax / 52), 2)
         self.monthly_tax = round((self.tax / 12), 2)
@@ -225,8 +213,8 @@ class SingleTaxCalculator(TaxCalculator):
     def calculate_net_income(self):
         """ calculate the net income for the user with civil status single """
         self.net_income_yearly = self.income - self.yearly_tax
-        self.net_income_monthly = round(self.net_income_yearly / 12, 2)
-        self.net_income_weekly = round(self.net_income_yearly / 52, 2)
+        self.net_income_monthly = round(self.net_income_yearly/12, 2)
+        self.net_income_weekly = round(self.net_income_yearly/52, 2)
 
     # welcome message , description of the app
 
