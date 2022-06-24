@@ -49,7 +49,7 @@ class TaxCalculator:
 
     def calculate_tax(self):
         """
-        This method is used to calculate the tax for the user
+        This method is used to calculate the tax for the user as per input
         """
         pass
 
