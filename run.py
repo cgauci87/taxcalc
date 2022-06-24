@@ -136,8 +136,8 @@ class ParentTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            ['self.net_income_weekly, self.net_income_monthly, '
-             'self.net_income_yearly']
+            ('self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly')
         ]
         print(
             tabulate(
@@ -205,8 +205,8 @@ class MarriedTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            ['self.net_income_weekly, self.net_income_monthly, '
-             'self.net_income_yearly']
+            ('self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly')
         ]
         print(
             tabulate(
@@ -274,8 +274,8 @@ class SingleTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            ['self.net_income_weekly, self.net_income_monthly, '
-             'self.net_income_yearly']
+            ('self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly')
         ]
         print(
             tabulate(
