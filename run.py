@@ -55,7 +55,7 @@ class TaxCalculator:
 
     def calculate_net_income(self):
         """
-        This method is used to calculate the net income for the user
+        This method is used to calculate the net income for the user as per input
         """
         pass
 
