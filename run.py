@@ -20,7 +20,7 @@ def is_valid_input(input_string, input_type):
 
 
 def validate_name(name):
-    # scan number and special character validation
+    # scan number and special character
     if name.replace(" ", "").isalpha():
         return True
     else:
@@ -49,13 +49,13 @@ class TaxCalculator:
 
     def calculate_tax(self):
         """
-        This method is used to calculate the tax for the user as per input
+        This method is used to calculate the tax for the user
         """
         pass
 
     def calculate_net_income(self):
         """
-        This method is used to calculate the net income for the user as per input
+        This method is used to calculate the net income for the user
         """
         pass
 
@@ -136,18 +136,12 @@ class ParentTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
-        ]
-        print(
-            tabulate(
-                data,
-                headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
-                ],
-            )
-        )
+            [self.net_income_weekly,
+             self.net_income_monthly,
+             self.net_income_yearly]]
+        print(tabulate(data, headers=["Weekly Net Income",
+                                      "Monthly Net Income",
+                                      "Yearly Net Income"]))
 
 
 class MarriedTaxCalculator(TaxCalculator):
@@ -203,19 +197,12 @@ class MarriedTaxCalculator(TaxCalculator):
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
-        data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
-        ]
-        print(
-            tabulate(
-                data,
-                headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
-                ],
-            )
-        )
+        data = [[self.net_income_weekly,
+                 self.net_income_monthly,
+                 self.net_income_yearly]]
+        print(tabulate(data, headers=["Weekly Net Income",
+                                      "Monthly Net Income",
+                                      "Yearly Net Income"]))
 
 
 class SingleTaxCalculator(TaxCalculator):
@@ -271,19 +258,12 @@ class SingleTaxCalculator(TaxCalculator):
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
-        data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
-        ]
-        print(
-            tabulate(
-                data,
-                headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
-                ],
-            )
-        )
+        data = [[self.net_income_weekly,
+                 self.net_income_monthly,
+                 self.net_income_yearly]]
+        print(tabulate(data, headers=["Weekly Net Income",
+                                      "Monthly Net Income",
+                                      "Yearly Net Income"]))
 
     # welcome message , description of the app
 
@@ -392,19 +372,22 @@ while True:
         instance.display_data(user_name)
 
         # Want to continue?
-        continue_input = str(input("Do you want to continue? (Y/N): ")).upper()
+        continue_input = str(
+            input("Would you like to calculate other salary?(Y/N):")
+        ).upper()
         if not is_valid_input(continue_input, "YN"):
-            print("Invalid input! Please try again by either type Y or N.")
+            print("Invalid input! Please try again, by either type Y or N.")
             continue
-            if continue_input == "N":
-                # terminate the program
-                print(f"Thank you for using this program, {user_name}!")
-                break
-            else:
-                # continue the program
-                print("\n\n")
-                continue
+
+        if continue_input == "N":
+            # terminate the program
+            print(f"Thank you for using this app, {user_name}!")
+            break
+        else:
+            # continue the program
+            print("\n\n")
+            continue
     else:
         # if there is an unexpected error in the input
-        print("Something went wrong!")
+        print("Oops! Something went wrong..")
         continue
