@@ -61,7 +61,7 @@ class TaxCalculator:
 
     def display_data(self, user_name):
         """
-        This method is used to display the data for the user
+        This method is used to display the data
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         print(f"\t\t\t\t\tWeekly\t\t\t\tMonthly\t\t\t\tYearly")
