@@ -20,7 +20,7 @@ def is_valid_input(input_string, input_type):
 
 
 def validate_name(name):
-    # scan number and special character
+    # scan number and special character validation
     if name.replace(" ", "").isalpha():
         return True
     else:
