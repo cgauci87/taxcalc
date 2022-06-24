@@ -86,7 +86,7 @@ class TaxCalculator:
 class ParentTaxCalculator(TaxCalculator):
     """
     Child class that inherits from the Parent class,
-    It is used to calculate the tax for the user
+    It is used to calculate the tax for a user
     with civil status parent
     """
 
