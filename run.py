@@ -274,7 +274,7 @@ print(
     "\t\t\tsalary with income tax according to your input.\n"
     "\t\t\tPlease note that result may vary with your actual salary\n"
     "\t\t\tdue to other deductions such as national insurance,\n"
-    "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
+    "\t\t\tand/or benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t**************************************************************\n"
 )
 
