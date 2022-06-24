@@ -136,12 +136,18 @@ class ParentTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly,
-             self.net_income_monthly,
-             self.net_income_yearly]]
-        print(tabulate(data, headers=["Weekly Net Income",
-                                      "Monthly Net Income",
-                                      "Yearly Net Income"]))
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
 
 
 class MarriedTaxCalculator(TaxCalculator):
@@ -197,12 +203,19 @@ class MarriedTaxCalculator(TaxCalculator):
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
-        data = [[self.net_income_weekly,
-                 self.net_income_monthly,
-                 self.net_income_yearly]]
-        print(tabulate(data, headers=["Weekly Net Income",
-                                      "Monthly Net Income",
-                                      "Yearly Net Income"]))
+        data = [
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
 
 
 class SingleTaxCalculator(TaxCalculator):
@@ -258,14 +271,22 @@ class SingleTaxCalculator(TaxCalculator):
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
-        data = [[self.net_income_weekly,
-                 self.net_income_monthly,
-                 self.net_income_yearly]]
-        print(tabulate(data, headers=["Weekly Net Income",
-                                      "Monthly Net Income",
-                                      "Yearly Net Income"]))
+        data = [
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
 
     # welcome message , description of the app
+
 
 def welcome():
 
@@ -279,124 +300,125 @@ def welcome():
         "\n\t\t\t**************************************************************\n"
     )
 
-    user_name = ""
-    while True:
-        user_name = str(input("Enter your name: ")).capitalize()
-        if not validate_name(user_name):
-            print("Digits or special characters should not be in name")
+
+user_name = ""
+while True:
+    user_name = str(input("Enter your name: ")).capitalize()
+    if not validate_name(user_name):
+        print("Digits or special characters should not be in name")
+        continue
+    break
+
+while True:
+    instance = None
+
+    # ask the user for the student status
+    is_student = str(input("Are you a student? (Y/N): ")).upper()
+    if not is_valid_input(is_student, "YN"):
+        print(
+            "Invalid input! Please try again.. \
+        If you are a student - type Y , if not - type N"
+        )
+        continue
+    break
+while True:
+
+    # ask the user for the age over 18
+    is_over_18_years = str(input("Are you over 18? (Y/N): ")).upper()
+    if not is_valid_input(is_over_18_years, "YN"):
+        print(
+            "Invalid input! Please try again.. \
+           If you are over 18 years of age - type Y, if not - type N"
+        )
+        continue
+    break
+while True:
+    # if the under 18, skip to ask for before 1962 option
+    if is_over_18_years == "Y":
+        # ask the user for the born before 1962
+        is_born_before_1962 = str(input("born before 1962? (Y/N): ")).upper()
+        if not is_valid_input(is_born_before_1962, "YN"):
+            print(
+                "Invalid input! Please try again.. \
+           if you were born before 1962 - type Y , if not - type N"
+            )
             continue
-        break
+    break
+while True:
+    # ask the user for the civil status
+    civil_status = str(input("single, married or parent? (S/M/P): ")).upper()
+    if not is_valid_input(civil_status, "SMP"):
+        print(
+            "Invalid input! Please try again.. \
+        if your status is Single - type S , \
+        if Married - type M , if Parent - type P"
+        )
+        continue
+    break
+while True:
+    # ask the user for the income
+    try:
+        income = float(input("Enter your income: "))
+    except ValueError:
+        print(
+            "Invalid input! Please try again by entering your income.\
+             Do not include special characters"
+        )
+        continue
+    break
+# print("Check 1")
+while True:
+    if isinstance(income, float) or isinstance(income, int):
 
-# while True:
-#     instance = None
+        # income value validation
+        if income <= 0:
+            print("Income should be greater than 0. Please try again.")
+    break
 
-#     # ask the user for the student status
-#     is_student = str(input("Are you a student? (Y/N): ")).upper()
-#     if not is_valid_input(is_student, "YN"):
-#         print(
-#             "Invalid input! Please try again.. \
-#         If you are a student - type Y , if not - type N"
-#         )
-#         continue
-#     break
-# while True:
+# print("Check 2")
+while True:
+    # create an instance of the class based on the user input
+    if civil_status == "S":
+        instance = SingleTaxCalculator(income)
+    elif civil_status == "M":
+        instance = MarriedTaxCalculator(income)
+    elif civil_status == "P":
+        instance = ParentTaxCalculator(income)
+    if instance:
 
-#     # ask the user for the age over 18
-#     is_over_18_years = str(input("Are you over 18? (Y/N): ")).upper()
-#     if not is_valid_input(is_over_18_years, "YN"):
-#         print(
-#             "Invalid input! Please try again.. \
-#            If you are over 18 years of age - type Y, if not - type N"
-#         )
-#         continue
-#     break
-# while True:
-#     # if the under 18, skip to ask for before 1962 option
-#     if is_over_18_years == "Y":
-#         # ask the user for the born before 1962
-#         is_born_before_1962 = str(input("born before 1962? (Y/N): ")).upper()
-#         if not is_valid_input(is_born_before_1962, "YN"):
-#             print(
-#                 "Invalid input! Please try again.. \
-#            if you were born before 1962 - type Y , if not - type N"
-#             )
-#             continue
-#     break
-# while True:
-#     # ask the user for the civil status
-#     civil_status = str(input("single, married or parent? (S/M/P): ")).upper()
-#     if not is_valid_input(civil_status, "SMP"):
-#         print(
-#             "Invalid input! Please try again.. \
-#         if your status is Single - type S , \
-#         if Married - type M , if Parent - type P"
-#         )
-#         continue
-#     break
-# while True:
-#     # ask the user for the income
-#     try:
-#         income = float(input("Enter your income: "))
-#     except ValueError:
-#         print(
-#             "Invalid input! Please try again by entering your income.\
-#              Do not include special characters"
-#         )
-#         continue
-#     break
-# # print("Check 1")
-# while True:
-#     if isinstance(income, float) or isinstance(income, int):
+        # calculate the tax for the user
+        instance.calculate_tax()
 
-#         # income value validation
-#         if income <= 0:
-#             print("Income should be greater than 0. Please try again.")
-#     break
+        # calculate the net income for the user
+        instance.calculate_net_income()
 
-# # print("Check 2")
-# while True:
-#     # create an instance of the class based on the user input
-#     if civil_status == "S":
-#         instance = SingleTaxCalculator(income)
-#     elif civil_status == "M":
-#         instance = MarriedTaxCalculator(income)
-#     elif civil_status == "P":
-#         instance = ParentTaxCalculator(income)
-#     if instance:
+        # print the results
+        instance.display_data(user_name)
 
-#         # calculate the tax for the user
-#         instance.calculate_tax()
+        # Want to continue?
+        continue_input = str(
+            input("Would you like to calculate other salary?(Y/N):")
+        ).upper()
+        if not is_valid_input(continue_input, "YN"):
+            print("Invalid input! Please try again, by either type Y or N.")
+            continue
 
-#         # calculate the net income for the user
-#         instance.calculate_net_income()
-
-#         # print the results
-#         instance.display_data(user_name)
-
-#         # Want to continue?
-#         continue_input = str(
-#             input("Would you like to calculate other salary?(Y/N):")
-#         ).upper()
-#         if not is_valid_input(continue_input, "YN"):
-#             print("Invalid input! Please try again, by either type Y or N.")
-#             continue
-
-#         if continue_input == "N":
-#             # terminate the program
-#             print(f"Thank you for using this app, {user_name}!")
-#             break
-#         else:
-#             # continue the program
-#             print("\n\n")
-#             continue
-#     else:
-#         # if there is an unexpected error in the input
-#         print("Oops! Something went wrong..")
-#         continue
+        if continue_input == "N":
+            # terminate the program
+            print(f"Thank you for using this app, {user_name}!")
+            break
+        else:
+            # continue the program
+            print("\n\n")
+            continue
+    else:
+        # if there is an unexpected error in the input
+        print("Oops! Something went wrong..")
+        continue
 
 
 def main():
-    welcome();
+    welcome()
 
 
 main()
