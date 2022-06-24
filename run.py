@@ -1,3 +1,6 @@
+from tabulate import tabulate
+
+
 def is_valid_input(input_string, input_type):
     """
     this method is used to check if the input is
@@ -127,6 +130,25 @@ class ParentTaxCalculator(TaxCalculator):
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
 
+    def display_data(self, user_name):
+        """
+        This method is used to display the data for the user
+        """
+        print(f"\nGross Salary Breakdown for {user_name} is:")
+        data = [
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
+
 
 class MarriedTaxCalculator(TaxCalculator):
     """
@@ -175,6 +197,25 @@ class MarriedTaxCalculator(TaxCalculator):
         self.net_income_yearly = self.income - self.yearly_tax
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
+
+    def display_data(self, user_name):
+        """
+        This method is used to display the data for the user
+        """
+        print(f"\nGross Salary Breakdown for {user_name} is:")
+        data = [
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
 
 
 class SingleTaxCalculator(TaxCalculator):
@@ -225,6 +266,25 @@ class SingleTaxCalculator(TaxCalculator):
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
 
+    def display_data(self, user_name):
+        """
+        This method is used to display the data for the user
+        """
+        print(f"\nGross Salary Breakdown for {user_name} is:")
+        data = [
+            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
+
     # welcome message , description of the app
 
 
@@ -238,6 +298,8 @@ print(
     "\n\t\t\t**************************************************************\n"
 )
 
+
+user_name = ""
 while True:
     user_name = str(input("Enter your name: ")).capitalize()
     if not validate_name(user_name):
@@ -301,15 +363,16 @@ while True:
         )
         continue
     break
+# print("Check 1")
 while True:
     if isinstance(income, float) or isinstance(income, int):
 
         # income value validation
         if income <= 0:
             print("Income should be greater than 0. Please try again.")
-        continue
     break
 
+# print("Check 2")
 while True:
     # create an instance of the class based on the user input
     if civil_status == "S":
@@ -327,7 +390,7 @@ while True:
         instance.calculate_net_income()
 
         # print the results
-        instance.display_data()
+        instance.display_data(user_name)
 
         # Want to continue?
         continue_input = str(
