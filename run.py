@@ -66,8 +66,8 @@ class TaxCalculator:
         print(f"\nGross Salary Breakdown for {user_name} is:")
         print(f"\t\t\t\t\tWeekly\t\t\t\tMonthly\t\t\t\tYearly")
         print(
-            f"Gross Salary: \t\t€{round(self.income/52,2)}\t\t\t\t€ \
-            {round(self.income/12,2)}\t\t\t\t€{self.income}"
+            f"Gross Salary: \t\t€{round(self.income / 52, 2)}\t\t\t\t€ \
+            {round(self.income / 12, 2)}\t\t\t\t€{self.income}"
         )
         print(
             f"Tax: \t\t\t\t€{self.weekly_tax}\t\t\t\t€ \
@@ -136,7 +136,8 @@ class ParentTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ['self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly']
         ]
         print(
             tabulate(
@@ -204,7 +205,8 @@ class MarriedTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ['self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly']
         ]
         print(
             tabulate(
@@ -272,7 +274,8 @@ class SingleTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ['self.net_income_weekly, self.net_income_monthly, '
+             'self.net_income_yearly']
         ]
         print(
             tabulate(
@@ -297,7 +300,6 @@ print(
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t**************************************************************\n"
 )
-
 
 user_name = ""
 while True:
@@ -393,22 +395,19 @@ while True:
         instance.display_data(user_name)
 
         # Want to continue?
-        continue_input = str(
-            input("Would you like to calculate other salary?(Y/N):")
-        ).upper()
+        continue_input = str(input("Do you want to continue? (Y/N): ")).upper()
         if not is_valid_input(continue_input, "YN"):
-            print("Invalid input! Please try again, by either type Y or N.")
+            print("Invalid input! Please try again by either type Y or N.")
             continue
-
-        if continue_input == "N":
-            # terminate the program
-            print(f"Thank you for using this app, {user_name}!")
-            break
-        else:
-            # continue the program
-            print("\n\n")
-            continue
+            if continue_input == "N":
+                # terminate the program
+                print(f"Thank you for using this program, {user_name}!")
+                break
+            else:
+                # continue the program
+                print("\n\n")
+                continue
     else:
         # if there is an unexpected error in the input
-        print("Oops! Something went wrong..")
+        print("Something went wrong!")
         continue
