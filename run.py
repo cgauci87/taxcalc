@@ -277,7 +277,7 @@ print(
     "\t\t\tand/or benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t**************************************************************\n"
 )
-
+     # ask the user for name
 user_name = ""
 while True:
     user_name = str(input("Enter your name: ")).capitalize()
