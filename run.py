@@ -130,13 +130,24 @@ class ParentTaxCalculator(TaxCalculator):
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
 
+    def calculate_gross_income(self):
+        self.gross_income_yearly = self.income
+        self.gross_income_monthly = round(self.gross_income_yearly / 12, 2)
+        self.gross_income_weekly = round(self.gross_income_yearly / 52, 2)
+
     def display_data(self, user_name):
         """
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ["Gross Salary: ", self.gross_income_weekly,
+             self.gross_income_monthly, self.gross_income_yearly],
+            ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
+            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
+             self.cola_bonus_yearly],
+            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
+             self.net_income_yearly]
         ]
         print(
             tabulate(
@@ -198,13 +209,24 @@ class MarriedTaxCalculator(TaxCalculator):
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
 
+    def calculate_gross_income(self):
+        self.gross_income_yearly = self.income
+        self.gross_income_monthly = round(self.gross_income_yearly / 12, 2)
+        self.gross_income_weekly = round(self.gross_income_yearly / 52, 2)
+
     def display_data(self, user_name):
         """
-        This method is used to display the data for the user
+            This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ["Gross Salary: ", self.gross_income_weekly,
+             self.gross_income_monthly, self.gross_income_yearly],
+            ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
+            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
+             self.cola_bonus_yearly],
+            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
+             self.net_income_yearly]
         ]
         print(
             tabulate(
@@ -266,13 +288,24 @@ class SingleTaxCalculator(TaxCalculator):
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
 
+    def calculate_gross_income(self):
+        self.gross_income_yearly = self.income
+        self.gross_income_monthly = round(self.gross_income_yearly / 12, 2)
+        self.gross_income_weekly = round(self.gross_income_yearly / 52, 2)
+
     def display_data(self, user_name):
         """
         This method is used to display the data for the user
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            [self.net_income_weekly, self.net_income_monthly, self.net_income_yearly]
+            ["Gross Salary: ", self.gross_income_weekly,
+             self.gross_income_monthly, self.gross_income_yearly],
+            ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
+            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
+             self.cola_bonus_yearly],
+            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
+             self.net_income_yearly]
         ]
         print(
             tabulate(
@@ -288,30 +321,26 @@ class SingleTaxCalculator(TaxCalculator):
     # welcome message , description of the app
 
 
-def welcome():
-
-    print(
-        "\n\t\t\t***************************************************************\n"
-        "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate your\n"
-        "\t\t\tsalary with income tax according to your input.\n"
-        "\t\t\tPlease note that result may vary with your actual salary\n"
-        "\t\t\tdue to other deductions such as national insurance,\n"
-        "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
-        "\n\t\t\t**************************************************************\n"
-    )
+print(
+    "\n\t\t\t***************************************************************\n"
+    "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate your\n"
+    "\t\t\tsalary with income tax according to your input.\n"
+    "\t\t\tPlease note that result may vary with your actual salary\n"
+    "\t\t\tdue to other deductions such as national insurance,\n"
+    "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
+    "\n\t\t\t**************************************************************\n"
+)
 
 
-user_name = ""
-while True:
+def ask_name():
+    global user_name
     user_name = str(input("Enter your name: ")).capitalize()
     if not validate_name(user_name):
         print("Digits or special characters should not be in name")
-        continue
-    break
+        ask_name()
 
-while True:
-    instance = None
 
+def studies_status():
     # ask the user for the student status
     is_student = str(input("Are you a student? (Y/N): ")).upper()
     if not is_valid_input(is_student, "YN"):
@@ -319,10 +348,11 @@ while True:
             "Invalid input! Please try again.. \
         If you are a student - type Y , if not - type N"
         )
-        continue
-    break
-while True:
+        studies_status()
 
+
+def ask_age():
+    global is_over_18_years
     # ask the user for the age over 18
     is_over_18_years = str(input("Are you over 18? (Y/N): ")).upper()
     if not is_valid_input(is_over_18_years, "YN"):
@@ -330,9 +360,10 @@ while True:
             "Invalid input! Please try again.. \
            If you are over 18 years of age - type Y, if not - type N"
         )
-        continue
-    break
-while True:
+        ask_age()
+
+
+def ask_born_year():
     # if the under 18, skip to ask for before 1962 option
     if is_over_18_years == "Y":
         # ask the user for the born before 1962
@@ -342,9 +373,11 @@ while True:
                 "Invalid input! Please try again.. \
            if you were born before 1962 - type Y , if not - type N"
             )
-            continue
-    break
-while True:
+            ask_born_year()
+
+
+def check_civil_status():
+    global civil_status
     # ask the user for the civil status
     civil_status = str(input("single, married or parent? (S/M/P): ")).upper()
     if not is_valid_input(civil_status, "SMP"):
@@ -353,9 +386,12 @@ while True:
         if your status is Single - type S , \
         if Married - type M , if Parent - type P"
         )
-        continue
-    break
-while True:
+        check_civil_status()
+    return civil_status
+
+
+def ask_income():
+    global income
     # ask the user for the income
     try:
         income = float(input("Enter your income: "))
@@ -364,19 +400,21 @@ while True:
             "Invalid input! Please try again by entering your income.\
              Do not include special characters"
         )
-        continue
-    break
+        ask_income()
+
+
 # print("Check 1")
-while True:
+def check_income_type():
     if isinstance(income, float) or isinstance(income, int):
 
         # income value validation
         if income <= 0:
             print("Income should be greater than 0. Please try again.")
-    break
+    return
+
 
 # print("Check 2")
-while True:
+def calculations():
     # create an instance of the class based on the user input
     if civil_status == "S":
         instance = SingleTaxCalculator(income)
@@ -392,6 +430,9 @@ while True:
         # calculate the net income for the user
         instance.calculate_net_income()
 
+        # calculate the gross income for the user
+        instance.calculate_gross_income()
+
         # print the results
         instance.display_data(user_name)
 
@@ -401,24 +442,29 @@ while True:
         ).upper()
         if not is_valid_input(continue_input, "YN"):
             print("Invalid input! Please try again, by either type Y or N.")
-            continue
 
         if continue_input == "N":
             # terminate the program
             print(f"Thank you for using this app, {user_name}!")
-            break
+            return
         else:
             # continue the program
-            print("\n\n")
-            continue
+            print("\n\n\n\n")
+            main()
     else:
         # if there is an unexpected error in the input
         print("Oops! Something went wrong..")
-        continue
 
 
 def main():
-    welcome()
+    ask_name()
+    studies_status()
+    ask_age()
+    ask_born_year()
+    check_civil_status()
+    ask_income()
+    check_income_type()
+    calculations()
 
 
 main()
