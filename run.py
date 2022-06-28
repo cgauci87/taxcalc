@@ -4,8 +4,8 @@ from tabulate import tabulate
 def is_valid_input(input_string, input_type):
     """
     this method is used to check if the input is
-    valid Either it is Y/N (for yes/no)
-    OR SMP (for single/married/parient)
+    valid; Either it is Y/N (for yes/no)
+    OR SMP (for single/married/parent)
     """
     if input_type == "YN":
         if input_string == "Y" or input_string == "N":
