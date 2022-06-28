@@ -74,4 +74,29 @@ I have used several technologies that have enabled this design to work:
 - [Grammarly](https://www.grammarly.com/)
     - Used to fix some grammar errors found in the project.
 ---
+## Testing
+
+### User Stories
+
+*'As a user, I want to be able to easily access the calculator.'*  
+The app is simplified. As soon as the app is executed - A Welcome message will be printed and at the same time, the user will be prompted to input his/her name.
+Once the user inputs the name - six questions will follow. The calculation depends on user input.
+
+*'As a user, I want to be able to input my name.'*  
+This is the first input. The user is asked to input a value for First Name. 
+
+*'As a user, I want to be able to choose from options such as Student, Age, Marital status.'*  
+These options/questions determine the outcome of the displayed data. The calculation is based on the input, so the user will be prompted on each, by inputting Y/N.
+This ensures that the user won't skip a question that is dependent on the outcome.
+
+*'As a user, I want to be able to input my salary gross amount to calculate net income.'*    
+This is one of the questions - once the user inputs the gross amount  of the salary in digits, the calculation can be performed and data will be displayed in a table
+will be printed accordingly.
+
+*'As a user, I want to be able to see Weekly Net Income, Monthly Net Income, and Yearly Net Income.'*  
+Once the user answers all questions -  A tabular table will be printed, displaying data that includes the Gross Salary, Tax, COLA/Bonus, and Net Salary.
+This data will be displayed in three columns, namely - Weekly Net Income, Monthly Net Income, and Yearly Net Income.
+
+*'As a user, I want to be able to have the option to re-calculate any other salary.'*
+This user will be prompted for the said option as soon as the table is printed. Otherwise, the user can choose to terminate the app.
 
