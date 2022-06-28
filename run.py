@@ -445,7 +445,12 @@ def calculations():
 
         if continue_input == "N":
             # terminate the program
-            print(f"Thank you for using this app, {user_name}!")
+            print(
+                "\n\t\t\t*************************************************\n"
+                f"\n\t\t\t 10q for using Malta Tax Calculator, {user_name}"
+                "\n\t\t\t*************************************************\n"
+                "\n\t\t\t*************************************************\n"
+                )
             return
         else:
             # continue the program
