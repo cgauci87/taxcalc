@@ -444,10 +444,10 @@ def calculations():
             print("Invalid input! Please try again, by either type Y or N.")
 
         if continue_input == "N":
-            # terminate the program
+            # terminate the program - thank you message
             print(
                 "\n\t\t\t*************************************************\n"
-                f"\n\t\t\t 10q for using Malta Tax Calculator, {user_name}"
+                f"\n\t\t\t Thanks for using Malta Tax Calculator, {user_name}!"
                 "\n\t\t\t*************************************************\n"
                 "\n\t\t\t*************************************************\n"
                 )
@@ -460,7 +460,7 @@ def calculations():
         # if there is an unexpected error in the input
         print("Oops! Something went wrong..")
 
-
+# functions
 def main():
     ask_name()
     studies_status()
