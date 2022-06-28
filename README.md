@@ -50,3 +50,28 @@ The features included in this app are the following:
 ![](assets/images/thankyou_message.png)
 
 ---
+## Technologies Used
+
+I have used several technologies that have enabled this design to work:
+
+- [Python](https://www.python.org/)
+    - Python is the core programming language used to write all of the code in this application to make it fully functional.
+    - In addition to core Python I have used the following Python module:
+        - [tabulate](https://pypi.org/project/tabulate/)
+            - Used tabulate to display table data beautifully.
+- [GitHub](https://github.com/)
+    - Used to store code for the project after being pushed.
+- [Git](https://git-scm.com/)
+    - Used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+- [Gitpod](https://www.gitpod.io/)
+    - Used as the development environment.
+- [Heroku](https://dashboard.heroku.com/apps)
+    - Used to deploy my application.
+- [Lucid](https://lucid.app/documents#/dashboard)
+    - Used to create the flowchart for the project.
+- [Pep8](http://pep8online.com/)
+    - Used to test my code for any issues or errors.
+- [Grammarly](https://www.grammarly.com/)
+    - Used to fix some grammar errors found in the project.
+---
+
