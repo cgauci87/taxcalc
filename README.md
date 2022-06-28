@@ -35,3 +35,18 @@ As you can see from the flowchart above the logic has been based on the six key 
 - Would you like to calculate another salary? (Y/N)
 
 ---
+## Features
+The features included in this app are the following:
+
+### Welcome Message:
+- As soon as the user runs the app, a welcome message will be printed to the terminal. 
+- This message also contains a disclaimer, where it explains that the amount produced in the calculation may vary due to other deductions or benefits.
+
+![](assets/images/welcome_message.png)
+
+### Thank you Message:
+- As the user terminates the app, a thank you message will be printed to the terminal.
+
+![](assets/images/thankyou_message.png)
+
+---
