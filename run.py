@@ -326,7 +326,7 @@ print(
     "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate your\n"
     "\t\t\tsalary with income tax according to your input.\n"
     "\n\t\t\t**********************Disclaimer*******************************\n"
-    "\t\t\tPlease note that result may vary with your actual salary\n"
+    "\t\t\tPlease note that the result may vary with your actual salary\n"
     "\t\t\tdue to other deductions such as national insurance,\n"
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t***************************************************************\n"
