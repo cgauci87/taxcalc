@@ -204,3 +204,8 @@ All of this code has been written by me, however, I have used [Stack Overflow](h
 [Python Wiki](https://wiki.python.org/moin/WhileLoop) has been used throughout to assist me on while loops.
 
 ---
+## Acknowledgements
+
+I would like to thank my course mentor, Harry Dhillon, for his support and guidance throughout the project and my peers on Code Institute's slack channels for their support & feedback.
+
+---
