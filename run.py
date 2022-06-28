@@ -342,7 +342,7 @@ def ask_name():
 
 def studies_status():
     # ask the user for the student status
-    is_student = str(input("Are you a student? (Y/N): ")).upper()
+    is_student = str(input("Are you a Student ? (Y/N): ")).upper()
     if not is_valid_input(is_student, "YN"):
         print(
             "Invalid input! Please try again.. \
@@ -354,7 +354,7 @@ def studies_status():
 def ask_age():
     global is_over_18_years
     # ask the user for the age over 18
-    is_over_18_years = str(input("Are you over 18? (Y/N): ")).upper()
+    is_over_18_years = str(input("Are you over 18 ? (Y/N): ")).upper()
     if not is_valid_input(is_over_18_years, "YN"):
         print(
             "Invalid input! Please try again.. \
@@ -367,7 +367,7 @@ def ask_born_year():
     # if the under 18, skip to ask for before 1962 option
     if is_over_18_years == "Y":
         # ask the user for the born before 1962
-        is_born_before_1962 = str(input("born before 1962? (Y/N): ")).upper()
+        is_born_before_1962 = str(input("Born before 1962 ? (Y/N): ")).upper()
         if not is_valid_input(is_born_before_1962, "YN"):
             print(
                 "Invalid input! Please try again.. \
@@ -379,7 +379,7 @@ def ask_born_year():
 def check_civil_status():
     global civil_status
     # ask the user for the civil status
-    civil_status = str(input("single, married or parent? (S/M/P): ")).upper()
+    civil_status = str(input("Single, Married or Parent ? (S/M/P): ")).upper()
     if not is_valid_input(civil_status, "SMP"):
         print(
             "Invalid input! Please try again.. \
@@ -394,7 +394,7 @@ def ask_income():
     global income
     # ask the user for the income
     try:
-        income = float(input("Enter your income: "))
+        income = float(input("Enter your income ? (Input amount) "))
     except ValueError:
         print(
             "Invalid input! Please try again by entering your income.\
@@ -460,7 +460,8 @@ def calculations():
         # if there is an unexpected error in the input
         print("Oops! Something went wrong..")
 
-# functions
+
+# functions used in main
 def main():
     ask_name()
     studies_status()
