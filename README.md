@@ -195,3 +195,12 @@ In the Deploy tab:
 ![](assets/images/heroku_deployed_image.png)
 
 ---
+## Credits
+
+All of this code has been written by me, however, I have used [Stack Overflow](https://stackoverflow.com/) to help me debug my code and fix any issues that I had.
+
+[`PDB`](https://www.geeksforgeeks.org/debugging-python-code-using-breakpoint-and-pdb/) has been useful as well, to help me debug my code.
+
+[Python Wiki](https://wiki.python.org/moin/WhileLoop) has been used throughout to assist me on while loops.
+
+---
