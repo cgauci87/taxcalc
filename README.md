@@ -115,3 +115,15 @@ The method `validate_name` is used to scan a number and special character.
 ![](assets/images/validate_name_example.png)
 
 
+
+### Bugs and Fixes
+
+I received feedback from one of my peers that the application does not start from the beginning of the user wishes to calculate another salary;
+Upon consultation with Tutor, Ed Bradley, I fixed this issue by making more use of functions, ensuring that I would be able to restart/reuse code multiple times.
+Breaking the app into smaller, repeatable chunks had solved the bug.
+
+In addition to my testing of the app, I passed my code through the [Pep8](http://pep8online.com/) online validator which passed through with 0 issues:
+
+![](assets/images/pep8_validation.png)
+
+---
