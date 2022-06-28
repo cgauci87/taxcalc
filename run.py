@@ -325,10 +325,11 @@ print(
     "\n\t\t\t***************************************************************\n"
     "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate your\n"
     "\t\t\tsalary with income tax according to your input.\n"
+    "\n\t\t\t**********************Disclaimer*******************************\n"
     "\t\t\tPlease note that result may vary with your actual salary\n"
     "\t\t\tdue to other deductions such as national insurance,\n"
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
-    "\n\t\t\t**************************************************************\n"
+    "\n\t\t\t***************************************************************\n"
 )
 
 
@@ -394,7 +395,7 @@ def ask_income():
     global income
     # ask the user for the income
     try:
-        income = float(input("Enter your income ? (Input amount) "))
+        income = float(input("Enter your income ? (Input amount): "))
     except ValueError:
         print(
             "Invalid input! Please try again by entering your income.\
