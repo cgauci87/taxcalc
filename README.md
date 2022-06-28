@@ -57,8 +57,8 @@ I have used several technologies that have enabled this design to work:
 - [Python](https://www.python.org/)
     - Python is the core programming language used to write all of the code in this application to make it fully functional.
     - In addition to core Python I have used the following Python module:
-        - [tabulate](https://pypi.org/project/tabulate/)
-            - Used tabulate to display table data beautifully.
+        - [Tabulate](https://pypi.org/project/tabulate/)
+            - Used Tabulate to display table data beautifully.
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
