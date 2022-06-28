@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 def is_valid_input(input_string, input_type):
     """
-    this method is used to check if the input is
+    this method is used to check validation - if the input is
     valid; Either it is Y/N (for yes/no)
     OR SMP (for single/married/parent)
     """
@@ -439,7 +439,7 @@ def calculations():
 
         # Want to continue?
         continue_input = str(
-            input("Would you like to calculate other salary?(Y/N):")
+            input("Would you like to calculate another salary?(Y/N):")
         ).upper()
         if not is_valid_input(continue_input, "YN"):
             print("Invalid input! Please try again, by either type Y or N.")
