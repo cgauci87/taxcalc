@@ -100,3 +100,18 @@ This data will be displayed in three columns, namely - Weekly Net Income, Monthl
 *'As a user, I want to be able to have the option to re-calculate any other salary.'*
 This user will be prompted for the said option as soon as the table is printed. Otherwise, the user can choose to terminate the app.
 
+
+### Input Validation
+
+As this app relies heavily on users inputting information, validating these values is of the utmost importance at every step to ensure the information is viable.
+
+The method `is_valid_input` is used to check if the input is valid; Either it is Y/N (for yes/no) OR SMP (for single/married/parent)
+
+![](assets/images/is_valid_input.png)
+![](assets/images/is_valid_input_example.png)
+
+The method `validate_name` is used to scan a number and special character.
+![](assets/images/validate_name.png)
+![](assets/images/validate_name_example.png)
+
+
