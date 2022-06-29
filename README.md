@@ -1,16 +1,16 @@
 # Malta Salary Calculator
 
-![](assets/images/responsive.png)
+![](assets/images/mockup.png)
 
-[Live application can be found here](https://.herokuapp.com/)
+[Live application can be found here](https://taxcalc-app.herokuapp.com/)
 
 This is a Command Line Interface application designed for a user to calculate their salary tax. 
-This project has been designed for educational purposes and uses the Code Institutes mock terminal to run.
+This project has been designed for educational purposes and uses the Code Institute's mock terminal to run.
 
 ---
 ## UX
 To begin planning this project I started first with UX, designing the logic of the app, based on the user stories. 
-As this is a command-line application there is no design featured as HTML & CSS has not been used.
+As this is a command-line application, there is no design features as HTML & CSS have not been used.
 
 ### Strategy
 User Stories:
@@ -44,10 +44,23 @@ The features included in this app are the following:
 
 ![](assets/images/welcome_message.png)
 
+### Customized validation messages:
+- To ensure a user-friendly interface, validation messages are designed on a field-by-field basis.
+- Such specific messages help a user to identify what went wrong if there is an invalid input.
+
+![](assets/images/invalid_input_name.png)
+![](assets/images/invalid_input_student.png)
+![](assets/images/invalid_input_age.png)
+![](assets/images/invalid_input_1962.png)
+![](assets/images/invalid_input_smp.png)
+![](assets/images/invalid_input_income.png)
+
+
 ### Thank you Message:
 - As the user terminates the app, a thank you message will be printed to the terminal.
 
 ![](assets/images/thankyou_message.png)
+
 
 ---
 ## Technologies Used
@@ -178,7 +191,6 @@ I followed the below steps using the Code Institute tutorial:
 *Heroku Settings*
 You will need to set your Environment Variables - this is a key step to ensuring your application is deployed properly.
 - In the Settings tab, click on `Reveal Config Vars` and set the following variables:
-    - If using credentials you will need to add the credentials as a variable, the key is the name 'CREDS' and the value is the contents of your creds JSON
     - Add key: `PORT` & value `8000`
 - Buildpacks are also required for proper deployment, simply click `Add buildpack` and search for the ones that you require.
     - For this project, I needed to add `Python` and `Node.js`, in this order.
