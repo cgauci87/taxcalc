@@ -322,14 +322,14 @@ class SingleTaxCalculator(TaxCalculator):
 
 
 print(
-    "\n\t\t\t***************************************************************\n"
-    "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate your\n"
-    "\t\t\tsalary with income tax according to your input.\n"
-    "\n\t\t\t**********************Disclaimer*******************************\n"
-    "\t\t\tPlease note that the result may vary with your actual salary\n"
-    "\t\t\tdue to other deductions such as national insurance,\n"
+    "\n\t\t\t********************************************************\n"
+    "\n\t\t\tWelcome to Malta Tax Calculator. This app will calculate\n"
+    "\t\t\tyour salary with income tax according to your input.\n"
+    "\n\t\t\t**********************Disclaimer************************\n"
+    "\t\t\tPlease note that the result may vary with your actual\n"
+    "\t\t\tsalary due to other deductions such as national insurance,\n"
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
-    "\n\t\t\t***************************************************************\n"
+    "\n\t\t\t********************************************************\n"
 )
 
 
@@ -337,7 +337,10 @@ def ask_name():
     global user_name
     user_name = str(input("Enter your name: ")).capitalize()
     if not validate_name(user_name):
-        print("Digits or special characters should not be in name")
+        print(
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again by entering your name.\n"
+            "\n\t\t\tDo not include special characters or digits.\n")
         ask_name()
 
 
@@ -346,9 +349,10 @@ def studies_status():
     is_student = str(input("Are you a Student ? (Y/N): ")).upper()
     if not is_valid_input(is_student, "YN"):
         print(
-            "Invalid input! Please try again.. \
-        If you are a student - type Y , if not - type N"
-        )
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again..\n"
+            "\n\t\t\tIf you are a student - Type Y"
+            "\n\t\t\tOtherwise - Type N")
         studies_status()
 
 
@@ -358,9 +362,10 @@ def ask_age():
     is_over_18_years = str(input("Are you over 18 ? (Y/N): ")).upper()
     if not is_valid_input(is_over_18_years, "YN"):
         print(
-            "Invalid input! Please try again.. \
-           If you are over 18 years of age - type Y, if not - type N"
-        )
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again..\n"
+            "\n\t\t\tIf you are over 18 years of age - Type Y"
+            "\n\t\t\tOtherwise - Type N")
         ask_age()
 
 
@@ -371,9 +376,10 @@ def ask_born_year():
         is_born_before_1962 = str(input("Born before 1962 ? (Y/N): ")).upper()
         if not is_valid_input(is_born_before_1962, "YN"):
             print(
-                "Invalid input! Please try again.. \
-           if you were born before 1962 - type Y , if not - type N"
-            )
+                "\n\t\t\tInvalid input!\n"
+                "\n\t\t\tPlease try again..\n"
+                "\n\t\t\tIf you were born before 1962 - Type Y"
+                "\n\t\t\tOtherwise - Type N")
             ask_born_year()
 
 
@@ -383,10 +389,12 @@ def check_civil_status():
     civil_status = str(input("Single, Married or Parent ? (S/M/P): ")).upper()
     if not is_valid_input(civil_status, "SMP"):
         print(
-            "Invalid input! Please try again.. \
-        if your status is Single - type S , \
-        if Married - type M , if Parent - type P"
-        )
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again..\n"
+            "\n\t\t\tIf your status is Single - Type S"
+            "\n\t\t\tIf your status is Married - Type M"
+            "\n\t\t\tIf your status is Parent - Type P"
+            )
         check_civil_status()
     return civil_status
 
@@ -398,9 +406,10 @@ def ask_income():
         income = float(input("Enter your income ? (Input amount): "))
     except ValueError:
         print(
-            "Invalid input! Please try again by entering your income.\
-             Do not include special characters"
-        )
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again by entering your income..\n"
+            "\n\t\t\tInclude only income amount in digits\n"
+            )
         ask_income()
 
 
