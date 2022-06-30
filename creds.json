@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "taxcalc-354917",
+  "private_key_id": "1e0f99238ef8d3b9df99b05eb10c24e77c91ea69",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC65dZVsOg3Cd/R\nCR+haHxTk9OUFgPh6jfihC/x8vg88+jDQUT15J+mcjqqXEAFKkOzAJ7vriwwjO7E\nS+t443GTd5CdS2dUtuJKatJH52z2VGOXh5lidH5gr/PuuM2g24+3wbLLT0R6LAuu\nBJba72BTcRDiRDOgt7v2dj532kq3Vtp8Rcn1EINJ/gsOPeMb1Vjam/crBOFm7mcF\nRSwSozCPM1XrF+sK5bhOV6SzXvEk1ssut5ywP5ds4VRzySSKigkAD2gfs+ObkLe8\nrkHsZKKEmgySaFjbhgQoTzMaDGe0UgvFNkz6pDFE0J8+NpT08lsMQUdzeWuCIN1U\na5lFGeTzAgMBAAECggEADq6VgCp4jjJOtyDMr6UB90gqm9HVlj63Cyqv4DA3w1oJ\n0/o296DGezsyqUVmm2vu4OCl8QAxZShSbXCQBpwfb6KPOrwSBFFQROD6tJP/4aNO\n0OLhxXPkpaXM4i5PAQRJLaSgGLaZE4aNmFWwoBxOkzTToGK+h4ac08da2uwhaHYz\nbrn4xbYQ3BInqsVIpeGV40FHeHUUEdKLrqpzTN6QjrSlVyQpx9KWWgqjAYXfR+zY\ntSqZDMwnDJDjOpm94XHho7axUcv/jrSOqXcuzpSOs7+AlAYe7C2Z5DJQxyXmiVrt\nb+NyUGgqG3lARXKZe2YJ/eCMNzPCR9KKQffgcKrm+QKBgQDq6cFb/WrcbuC/0ms7\navMkmbGb6DkxKtMyiesAIUouXAATPvKkEY8M5heGgP6ThWO3olhMuAjQ6Sb47egk\n+b8bpM7zozyHimdGzBm7qdtmS9FmKecvM9cOLQiqFIsXaIr92PsamqUQyinGLmb/\nEiycluuCRwmglZnOWmCu4R/7/QKBgQDLrLPCZjoAlfrIA3hzMJ12djqPSUQHijn+\nI3+ZfLussWiHrzyV41NHlAaEhcViF3Id37ZnJ6QxvDwuw06eHLrtm8+tbhA6syjg\nPUe4HM9Zi1Va5lcD6mNb7XEVmovjOFye1IBv01nZX7/WyhYmBYmOugcmkFXLtQso\nJTaz7m0frwKBgGIc93FgSn1+ocf8LmVGqf6jYpbnStvKMyNsjwYi4USzkCR5qgX0\nf3a3syOuRKWAlMFhwNdqFeSLPIfDda3b0YHON9FyYBmMKM5c+HJ04vm6uN6eqbwB\nPtTg4jmHEwDX3RVgxp+57y8wAHqRbtsh0BgmwH5NBSxYz0BsZu0jgaRRAoGAc1E7\nDgw3NvGz5d8hKYcTAGl8SnhfDi3TG/MZYdvfnq1r07cCBJOLKXHEJvBei2Ve9U8e\nxVUKgCZlpMxsDNWTeMjJUxaIFdQuhpfrrXCSbc6X6zmTduIUk43igyrXnTTiLAOB\nHM97hbnSslgFJk3oTmlBdzItgYLl6Dr5t/J80n0CgYEAytO2cAKz9wa20bY4EvA3\nr08t4Kt4bT8cFSrITzlgNKLBUkpaGCgYcGeLwFe1ZaEho7+gNazQHF0DVM1SNuAZ\nLBAHh2oBw22fmqFIt7qa+Fkk2keaX3MnsbiIUwHoHck10UPmiagd5F5/Ki17CNsc\nXDi0BLH7yvAgc4v2BVgHEI8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "taxcalc@taxcalc-354917.iam.gserviceaccount.com",
+  "client_id": "108405388851081412721",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/taxcalc%40taxcalc-354917.iam.gserviceaccount.com"
+}
