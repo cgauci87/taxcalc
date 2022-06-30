@@ -5,19 +5,14 @@ from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+    "https://www.googleapis.com/auth/drive",
+]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('taxcalc_user_data')
-
-salaries = SHEET.worksheet('salaries')
-
-data = salaries.get_all_values()
-
-print(data)
+SHEET = GSPREAD_CLIENT.open("taxcalc_user_data")
+salaries = SHEET.worksheet("salaries")
 
 
 def is_valid_input(input_string, input_type):
@@ -102,6 +97,27 @@ class TaxCalculator:
         )
 
     def store_data_in_google_sheet(self):
+
+        # Insert row in google spreadsheet to store the user data
+        row_data = [
+            user_name,
+            round(self.income / 52, 2),
+            round(self.income / 12, 2),
+            self.income,
+            self.weekly_tax,
+            self.monthly_tax,
+            self.yearly_tax,
+            self.cola_bonus_weekly,
+            self.cola_bonus_monthly,
+            self.cola_bonus_yearly,
+            self.net_income_weekly,
+            self.net_income_monthly,
+            self.net_income_yearly,
+        ]
+        salaries.append_row(row_data)
+        return
+
+    def display_google_sheet_data(self):
         pass
 
 
@@ -113,41 +129,36 @@ class ParentTaxCalculator(TaxCalculator):
     """
 
     def __init__(self, income):
-        """ default values for the class """
+        """default values for the class"""
         self.income = income
         self.cola_bonus_weekly = 9.86
         self.cola_bonus_monthly = 42.71
         self.cola_bonus_yearly = 512.52
 
     def calculate_tax(self):
-        """ calculate the tax for the user with civil status parent """
+        """calculate the tax for the user with civil status parent"""
 
         # 0 tax for income less than or equal to €10500
         if self.income <= 10500:
             self.tax = 0
-
         # 15% tax for income between 10501 - €15800
         elif self.income >= 10501 and self.income <= 15800:
             self.tax = ((self.income) * 15 / 100) - 1575
-
         # 25% tax for income between 15801 - €21200
         elif self.income >= 15801 and self.income <= 21200:
             self.tax = ((self.income) * 25 / 100) - 3155
-
         # 25% tax for income between 21201 - €60000
         elif self.income >= 21201 and self.income <= 60000:
             self.tax = ((self.income) * 25 / 100) - 3050
-
         # 35% tax for income above €60000
         elif self.income > 60000:
             self.tax = ((self.income) * 35 / 100) - 9050
-
         self.weekly_tax = round((self.tax / 52), 2)
         self.monthly_tax = round((self.tax / 12), 2)
         self.yearly_tax = round(self.tax, 2)
 
     def calculate_net_income(self):
-        """ calculate the net income for the user with civil status parent """
+        """calculate the net income for the user with civil status parent"""
         self.net_income_yearly = self.income - self.yearly_tax
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
@@ -163,13 +174,25 @@ class ParentTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            ["Gross Salary: ", self.gross_income_weekly,
-             self.gross_income_monthly, self.gross_income_yearly],
+            [
+                "Gross Salary: ",
+                self.gross_income_weekly,
+                self.gross_income_monthly,
+                self.gross_income_yearly,
+            ],
             ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
-            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
-             self.cola_bonus_yearly],
-            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
-             self.net_income_yearly]
+            [
+                "COLA/Bonus: ",
+                self.cola_bonus_weekly,
+                self.cola_bonus_monthly,
+                self.cola_bonus_yearly,
+            ],
+            [
+                "Net Salary: ",
+                self.net_income_weekly,
+                self.net_income_monthly,
+                self.net_income_yearly,
+            ],
         ]
         print(
             tabulate(
@@ -181,6 +204,35 @@ class ParentTaxCalculator(TaxCalculator):
                 ],
             )
         )
+
+    def display_google_sheet_data(self):
+        """
+        This method is used to display the data from google spread sheet
+        """
+        google_spread_sheet_data = salaries.get_all_values()
+        print(f"\n\n{20*'*'}Google Spread Sheet Data:{20*'*'}")
+        google_spread_sheet_data = google_spread_sheet_data[1:]
+
+        for row in google_spread_sheet_data:
+            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            data = [
+                ["Gross Salary: ", row[1], row[2], row[3]],
+                ["Tax: ", row[4], row[5], row[6]],
+                ["COLA/Bonus: ", row[7], row[8], row[9]],
+                ["Net Salary: ", row[10], row[11], row[12]],
+            ]
+            print(
+                tabulate(
+                    data,
+                    headers=[
+                        "Weekly Net Income",
+                        "Monthly Net Income",
+                        "Yearly Net Income",
+                    ],
+                ),
+                "\n",
+            )
+        print(40 * "*")
 
 
 class MarriedTaxCalculator(TaxCalculator):
@@ -191,121 +243,37 @@ class MarriedTaxCalculator(TaxCalculator):
     """
 
     def __init__(self, income):
-        """ default values for the class """
+        """default values for the class"""
         self.income = income
         self.cola_bonus_weekly = 9.86
         self.cola_bonus_monthly = 42.71
         self.cola_bonus_yearly = 512.52
 
     def calculate_tax(self):
-        """ calculate the tax for the user with civil status parent """
+        """calculate the tax for the user with civil status parent"""
         self.tax = 0.0
 
         # 0 tax for income less than or equal to €12700
         if self.income <= 12700:
             self.tax = 0
-
         # 15% tax for income between 12701 - €21200
         elif self.income >= 12701 and self.income <= 21200:
             self.tax = ((self.income) * 15 / 100) - 1905
-
         # 25% tax for income between 21201 - €28700
         elif self.income >= 21201 and self.income <= 28700:
             self.tax = ((self.income) * 25 / 100) - 4025
-
         # 25% tax for income between 28701 - €60000
         elif self.income >= 28701 and self.income <= 60000:
             self.tax = ((self.income) * 25 / 100) - 3905
-
         # 35% tax for income above €60000
         elif income > 60000:
             self.tax = ((self.income) * 35 / 100) - 9905
-
         self.weekly_tax = round((self.tax / 52), 2)
         self.monthly_tax = round((self.tax / 12), 2)
         self.yearly_tax = round(self.tax, 2)
 
     def calculate_net_income(self):
-        """ calculate the net income for the user with civil status married """
-        self.net_income_yearly = self.income - self.yearly_tax
-        self.net_income_monthly = round(self.net_income_yearly / 12, 2)
-        self.net_income_weekly = round(self.net_income_yearly / 52, 2)
-
-    def calculate_gross_income(self):
-        self.gross_income_yearly = self.income
-        self.gross_income_monthly = round(self.gross_income_yearly / 12, 2)
-        self.gross_income_weekly = round(self.gross_income_yearly / 52, 2)
-
-    def display_data(self, user_name):
-        """
-            This method is used to display the data for the user
-        """
-        print(f"\nGross Salary Breakdown for {user_name} is:")
-        data = [
-            ["Gross Salary: ", self.gross_income_weekly,
-             self.gross_income_monthly, self.gross_income_yearly],
-            ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
-            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
-             self.cola_bonus_yearly],
-            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
-             self.net_income_yearly]
-        ]
-        print(
-            tabulate(
-                data,
-                headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
-                ],
-            )
-        )
-
-
-class SingleTaxCalculator(TaxCalculator):
-    """
-    Child class that inherits from the Parent class,
-    It is used to calculate the tax for a user
-    with civil status single
-    """
-
-    def __init__(self, income):
-        """ default values for the class """
-        self.income = income
-        self.cola_bonus_weekly = 9.86
-        self.cola_bonus_monthly = 42.71
-        self.cola_bonus_yearly = 512.52
-
-    def calculate_tax(self):
-        """ calculate the tax for the user with civil status single """
-        self.tax = 0.0
-
-        # 0 tax for income less than or equal to €9100
-        if self.income <= 9100:
-            self.tax = 0
-
-        # 15% tax for income between 9101 - €14500
-        elif self.income > 9100 and self.income <= 14500:
-            self.tax = ((self.income) * 15 / 100) - 1365
-
-        # 25% tax for income between 14501 - €19500
-        elif self.income > 14500 and self.income <= 19500:
-            self.tax = ((self.income) * 25 / 100) - 2815
-
-        # 25% tax for income between 19501 - €60000
-        elif self.income > 19500 and self.income <= 60000:
-            self.tax = ((self.income) * 25 / 100) - 2725
-
-        # 35% tax for income above €60000
-        elif self.income > 60000:
-            self.tax = ((self.income) * 35 / 100) - 8725
-
-        self.weekly_tax = round((self.tax / 52), 2)
-        self.monthly_tax = round((self.tax / 12), 2)
-        self.yearly_tax = round(self.tax, 2)
-
-    def calculate_net_income(self):
-        """ calculate the net income for the user with civil status single """
+        """calculate the net income for the user with civil status married"""
         self.net_income_yearly = self.income - self.yearly_tax
         self.net_income_monthly = round(self.net_income_yearly / 12, 2)
         self.net_income_weekly = round(self.net_income_yearly / 52, 2)
@@ -321,13 +289,25 @@ class SingleTaxCalculator(TaxCalculator):
         """
         print(f"\nGross Salary Breakdown for {user_name} is:")
         data = [
-            ["Gross Salary: ", self.gross_income_weekly,
-             self.gross_income_monthly, self.gross_income_yearly],
+            [
+                "Gross Salary: ",
+                self.gross_income_weekly,
+                self.gross_income_monthly,
+                self.gross_income_yearly,
+            ],
             ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
-            ["COLA/Bonus: ", self.cola_bonus_weekly, self.cola_bonus_monthly,
-             self.cola_bonus_yearly],
-            ["Net Salary: ", self.net_income_weekly, self.net_income_monthly,
-             self.net_income_yearly]
+            [
+                "COLA/Bonus: ",
+                self.cola_bonus_weekly,
+                self.cola_bonus_monthly,
+                self.cola_bonus_yearly,
+            ],
+            [
+                "Net Salary: ",
+                self.net_income_weekly,
+                self.net_income_monthly,
+                self.net_income_yearly,
+            ],
         ]
         print(
             tabulate(
@@ -339,6 +319,150 @@ class SingleTaxCalculator(TaxCalculator):
                 ],
             )
         )
+
+    def display_google_sheet_data(self):
+        """
+        This method is used to display the data from google spread sheet
+        """
+        google_spread_sheet_data = salaries.get_all_values()
+        print(f"\n\n{20*'*'}Calculator History Data:{20*'*'}")
+        google_spread_sheet_data = google_spread_sheet_data[1:]
+
+        for row in google_spread_sheet_data:
+            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            data = [
+                ["Gross Salary: ", row[1], row[2], row[3]],
+                ["Tax: ", row[4], row[5], row[6]],
+                ["COLA/Bonus: ", row[7], row[8], row[9]],
+                ["Net Salary: ", row[10], row[11], row[12]],
+            ]
+            print(
+                tabulate(
+                    data,
+                    headers=[
+                        "Weekly Net Income",
+                        "Monthly Net Income",
+                        "Yearly Net Income",
+                    ],
+                ),
+                "\n",
+            )
+        print(40 * "*")
+
+
+class SingleTaxCalculator(TaxCalculator):
+    """
+    Child class that inherits from the Parent class,
+    It is used to calculate the tax for a user
+    with civil status single
+    """
+
+    def __init__(self, income):
+        """default values for the class"""
+        self.income = income
+        self.cola_bonus_weekly = 9.86
+        self.cola_bonus_monthly = 42.71
+        self.cola_bonus_yearly = 512.52
+
+    def calculate_tax(self):
+        """calculate the tax for the user with civil status single"""
+        self.tax = 0.0
+
+        # 0 tax for income less than or equal to €9100
+        if self.income <= 9100:
+            self.tax = 0
+        # 15% tax for income between 9101 - €14500
+        elif self.income > 9100 and self.income <= 14500:
+            self.tax = ((self.income) * 15 / 100) - 1365
+        # 25% tax for income between 14501 - €19500
+        elif self.income > 14500 and self.income <= 19500:
+            self.tax = ((self.income) * 25 / 100) - 2815
+        # 25% tax for income between 19501 - €60000
+        elif self.income > 19500 and self.income <= 60000:
+            self.tax = ((self.income) * 25 / 100) - 2725
+        # 35% tax for income above €60000
+        elif self.income > 60000:
+            self.tax = ((self.income) * 35 / 100) - 8725
+        self.weekly_tax = round((self.tax / 52), 2)
+        self.monthly_tax = round((self.tax / 12), 2)
+        self.yearly_tax = round(self.tax, 2)
+
+    def calculate_net_income(self):
+        """calculate the net income for the user with civil status single"""
+        self.net_income_yearly = self.income - self.yearly_tax
+        self.net_income_monthly = round(self.net_income_yearly / 12, 2)
+        self.net_income_weekly = round(self.net_income_yearly / 52, 2)
+
+    def calculate_gross_income(self):
+        self.gross_income_yearly = self.income
+        self.gross_income_monthly = round(self.gross_income_yearly / 12, 2)
+        self.gross_income_weekly = round(self.gross_income_yearly / 52, 2)
+
+    def display_data(self, user_name):
+        """
+        This method is used to display the data for the user
+        """
+        print(f"\nGross Salary Breakdown for {user_name} is:")
+        data = [
+            [
+                "Gross Salary: ",
+                self.gross_income_weekly,
+                self.gross_income_monthly,
+                self.gross_income_yearly,
+            ],
+            ["Tax: ", self.weekly_tax, self.monthly_tax, self.yearly_tax],
+            [
+                "COLA/Bonus: ",
+                self.cola_bonus_weekly,
+                self.cola_bonus_monthly,
+                self.cola_bonus_yearly,
+            ],
+            [
+                "Net Salary: ",
+                self.net_income_weekly,
+                self.net_income_monthly,
+                self.net_income_yearly,
+            ],
+        ]
+        print(
+            tabulate(
+                data,
+                headers=[
+                    "Weekly Net Income",
+                    "Monthly Net Income",
+                    "Yearly Net Income",
+                ],
+            )
+        )
+
+    def display_google_sheet_data(self):
+        """
+        This method is used to display the data from google spread sheet
+        """
+        google_spread_sheet_data = salaries.get_all_values()
+        print(f"\n\n{20*'*'}Calculator History Data:{20*'*'}")
+        google_spread_sheet_data = google_spread_sheet_data[1:]
+
+        for row in google_spread_sheet_data:
+            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            data = [
+                ["Gross Salary: ", row[1], row[2], row[3]],
+                ["Tax: ", row[4], row[5], row[6]],
+                ["COLA/Bonus: ", row[7], row[8], row[9]],
+                ["Net Salary: ", row[10], row[11], row[12]],
+            ]
+            print(
+                tabulate(
+                    data,
+                    headers=[
+                        "Weekly Net Income",
+                        "Monthly Net Income",
+                        "Yearly Net Income",
+                    ],
+                ),
+                "\n",
+            )
+        print(40 * "*")
 
     # welcome message , description of the app
 
@@ -354,15 +478,34 @@ print(
     "\n\t\t\t********************************************************\n"
 )
 
+salaries.batch_clear(
+    [
+        "A2:A1007",
+        "B2:B1007",
+        "C2:C1007",
+        "D2:D1007",
+        "E2:E1007",
+        "F2:F1007",
+        "G2:G1007",
+        "H2:H1007",
+        "I2:I1007",
+        "J2:I1007",
+        "K2:I1007",
+        "L2:L1007",
+        "M2:M1007",
+    ]
+)
+
 
 def ask_name():
     global user_name
-    user_name = str(input("Enter your name: ")).capitalize()
+    user_name = str(input("Enter name: ")).capitalize()
     if not validate_name(user_name):
         print(
             "\n\t\t\tInvalid input!\n"
-            "\n\t\t\tPlease try again by entering your name.\n"
-            "\n\t\t\tDo not include special characters or digits.\n")
+            "\n\t\t\tPlease try again by entering name.\n"
+            "\n\t\t\tDo not include special characters or digits.\n"
+        )
         ask_name()
 
 
@@ -374,7 +517,8 @@ def studies_status():
             "\n\t\t\tInvalid input!\n"
             "\n\t\t\tPlease try again..\n"
             "\n\t\t\tIf you are a student - Type Y"
-            "\n\t\t\tOtherwise - Type N")
+            "\n\t\t\tOtherwise - Type N"
+        )
         studies_status()
 
 
@@ -387,7 +531,8 @@ def ask_age():
             "\n\t\t\tInvalid input!\n"
             "\n\t\t\tPlease try again..\n"
             "\n\t\t\tIf you are over 18 years of age - Type Y"
-            "\n\t\t\tOtherwise - Type N")
+            "\n\t\t\tOtherwise - Type N"
+        )
         ask_age()
 
 
@@ -401,7 +546,8 @@ def ask_born_year():
                 "\n\t\t\tInvalid input!\n"
                 "\n\t\t\tPlease try again..\n"
                 "\n\t\t\tIf you were born before 1962 - Type Y"
-                "\n\t\t\tOtherwise - Type N")
+                "\n\t\t\tOtherwise - Type N"
+            )
             ask_born_year()
 
 
@@ -416,7 +562,7 @@ def check_civil_status():
             "\n\t\t\tIf your status is Single - Type S"
             "\n\t\t\tIf your status is Married - Type M"
             "\n\t\t\tIf your status is Parent - Type P"
-            )
+        )
         check_civil_status()
     return civil_status
 
@@ -431,7 +577,7 @@ def ask_income():
             "\n\t\t\tInvalid input!\n"
             "\n\t\t\tPlease try again by entering your income..\n"
             "\n\t\t\tInclude only income amount in digits\n"
-            )
+        )
         ask_income()
 
 
@@ -468,21 +614,43 @@ def calculations():
         # print the results
         instance.display_data(user_name)
 
+        # store in google sheet
+        instance.store_data_in_google_sheet()
+
+        # show the results in a table from google sheet
+        instance.display_google_sheet_data()
+
         # Want to continue?
         continue_input = str(
             input("Would you like to calculate another salary?(Y/N):")
         ).upper()
         if not is_valid_input(continue_input, "YN"):
             print("Invalid input! Please try again, by either type Y or N.")
-
         if continue_input == "N":
             # terminate the program - thank you message
             print(
                 "\n\t\t\t*************************************************\n"
-                f"\n\t\t\t Thanks for using Malta Tax Calculator, {user_name}!"
+                "\n\t\t\t****Thank you for using Malta Tax Calculator!****\n"
                 "\n\t\t\t*************************************************\n"
                 "\n\t\t\t*************************************************\n"
-                )
+            )
+            salaries.batch_clear(
+                [
+                    "A2:A1007",
+                    "B2:B1007",
+                    "C2:C1007",
+                    "D2:D1007",
+                    "E2:E1007",
+                    "F2:F1007",
+                    "G2:G1007",
+                    "H2:H1007",
+                    "I2:I1007",
+                    "J2:I1007",
+                    "K2:I1007",
+                    "L2:L1007",
+                    "M2:M1007",
+                ]
+            )
             return
         else:
             # continue the program
