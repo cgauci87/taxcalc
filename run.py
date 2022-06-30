@@ -1,5 +1,4 @@
 from tabulate import tabulate
-
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -101,6 +100,9 @@ class TaxCalculator:
             f"Net Salary: \t\t€{self.net_income_weekly}\t\t\t\t€ \
             {self.net_income_monthly}\t\t\t€{self.net_income_yearly}"
         )
+
+    def store_data_in_google_sheet(self):
+        pass
 
 
 class ParentTaxCalculator(TaxCalculator):
