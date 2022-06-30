@@ -207,7 +207,7 @@ class ParentTaxCalculator(TaxCalculator):
 
     def display_google_sheet_data(self):
         """
-        This method is used to display the data from google spread sheet
+        This method is used to display the data from google spreadsheet
         """
         google_spread_sheet_data = salaries.get_all_values()
         print(f"\n\n{20*'*'}Google Spread Sheet Data:{20*'*'}")
