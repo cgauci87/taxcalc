@@ -477,7 +477,8 @@ print(
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t********************************************************\n"
 )
-
+# clear the selected cell ranges to empty history
+#  data from any previous app use if any
 salaries.batch_clear(
     [
         "A2:A1007",
@@ -634,6 +635,7 @@ def calculations():
                 "\n\t\t\t*************************************************\n"
                 "\n\t\t\t*************************************************\n"
             )
+            # clear the selected cell ranges to empty history data
             salaries.batch_clear(
                 [
                     "A2:A1007",
