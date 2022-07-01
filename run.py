@@ -77,7 +77,7 @@ class TaxCalculator:
         """
         This method is used to display the data
         """
-        print(f"\nGross Salary Breakdown for {user_name} is:")
+        print(f"\nSalary Breakdown for {user_name} is:")
         print(f"\t\t\t\t\tWeekly\t\t\t\tMonthly\t\t\t\tYearly")
         print(
             f"Gross Salary: \t\t€{round(self.income / 52, 2)}\t\t\t\t€ \
@@ -172,7 +172,7 @@ class ParentTaxCalculator(TaxCalculator):
         """
         This method is used to display the data for the user
         """
-        print(f"\nGross Salary Breakdown for {user_name} is:")
+        print(f"\nSalary Breakdown for {user_name} is:")
         data = [
             [
                 "Gross Salary: ",
@@ -214,7 +214,7 @@ class ParentTaxCalculator(TaxCalculator):
         google_spread_sheet_data = google_spread_sheet_data[1:]
 
         for row in google_spread_sheet_data:
-            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            print(f"\nSalary Breakdown for {row[0]} is:")
             data = [
                 ["Gross Salary: ", row[1], row[2], row[3]],
                 ["Tax: ", row[4], row[5], row[6]],
@@ -287,7 +287,7 @@ class MarriedTaxCalculator(TaxCalculator):
         """
         This method is used to display the data for the user
         """
-        print(f"\nGross Salary Breakdown for {user_name} is:")
+        print(f"\nSalary Breakdown for {user_name} is:")
         data = [
             [
                 "Gross Salary: ",
@@ -325,11 +325,11 @@ class MarriedTaxCalculator(TaxCalculator):
         This method is used to display the data from google spread sheet
         """
         google_spread_sheet_data = salaries.get_all_values()
-        print(f"\n\n{20*'*'}Calculator History Data:{20*'*'}")
+        print(f"\n\n{20*'*'}Historical Data:{20*'*'}")
         google_spread_sheet_data = google_spread_sheet_data[1:]
 
         for row in google_spread_sheet_data:
-            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            print(f"\nSalary Breakdown for {row[0]} is:")
             data = [
                 ["Gross Salary: ", row[1], row[2], row[3]],
                 ["Tax: ", row[4], row[5], row[6]],
@@ -402,7 +402,7 @@ class SingleTaxCalculator(TaxCalculator):
         """
         This method is used to display the data for the user
         """
-        print(f"\nGross Salary Breakdown for {user_name} is:")
+        print(f"\nSalary Breakdown for {user_name} is:")
         data = [
             [
                 "Gross Salary: ",
@@ -440,11 +440,11 @@ class SingleTaxCalculator(TaxCalculator):
         This method is used to display the data from google spread sheet
         """
         google_spread_sheet_data = salaries.get_all_values()
-        print(f"\n\n{20*'*'}Calculator History Data:{20*'*'}")
+        print(f"\n\n{20*'*'}Historical Data:{20*'*'}")
         google_spread_sheet_data = google_spread_sheet_data[1:]
 
         for row in google_spread_sheet_data:
-            print(f"\nGross Salary Breakdown for {row[0]} is:")
+            print(f"\nSalary Breakdown for {row[0]} is:")
             data = [
                 ["Gross Salary: ", row[1], row[2], row[3]],
                 ["Tax: ", row[4], row[5], row[6]],
@@ -477,7 +477,7 @@ print(
     "\t\t\tand/or other benefits i.e. allowances and bonuses.\n"
     "\n\t\t\t********************************************************\n"
 )
-# clear the selected cell ranges to empty history
+# clear the selected cell ranges to empty historical
 #  data from any previous app use if any
 salaries.batch_clear(
     [
@@ -635,7 +635,7 @@ def calculations():
                 "\n\t\t\t*************************************************\n"
                 "\n\t\t\t*************************************************\n"
             )
-            # clear the selected cell ranges to empty history data
+            # clear the selected cell ranges to empty historical data
             salaries.batch_clear(
                 [
                     "A2:A1007",
