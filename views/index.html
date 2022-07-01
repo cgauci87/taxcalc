@@ -3,10 +3,10 @@
     <div id="terminal"></div>
 
     <script>
-        /*change rows from 24 to 28*/
+        /*change rows from 24 to 26*/
         var term = new Terminal({
             cols: 80,
-            rows: 28
+            rows: 26
         });
         term.open(document.getElementById('terminal'));
         term.writeln('Running startup command: python3 run.py');
