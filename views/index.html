@@ -1,15 +1,14 @@
 <body>
     <button onclick="window.location.reload()">Run Program</button>
     <div id="terminal"></div>
-    <a href="https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx" class="icon-block">
+    <a href="https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx" target="_blank" rel="noopener noreferrer" class="icon-block">
         <img id="source-icon" src="https://raw.githubusercontent.com/cgauci87/taxcalc/ba95e649b410e7bf3a2c1443e467e2a37695bd49/assets/images/source_icon.svg" alt="Salary info source">
     </a>
 
     <script>
-        /*change rows from 24 to 26*/
         var term = new Terminal({
             cols: 80,
-            rows: 26
+            rows: 24
         });
         term.open(document.getElementById('terminal'));
         term.writeln('Running startup command: python3 run.py');
