@@ -44,7 +44,7 @@
          content: '';
          position: absolute;
          height: 100px;
-         bottom: -70px;
+         bottom: -200px;
          right: 0;
          left: 0;
          background: #fff;
@@ -53,6 +53,16 @@
          -moz-transform: skewY(-3deg);
          -ms-transform: skewY(-3deg);
          }
+
+         .showcase-text {
+          animation: slideInFromLeft 1s ease-in;
+         }
+
+         .showcase p {
+          margin: 20px 0;
+          font-size: medium;
+         }
+         
          /* Tablets and under */
          @media (max-width: 768px) {
          .grid,
@@ -63,7 +73,13 @@
          .showcase {
          height: auto;
          }
+         .showcase-text {
+         text-align: center;
+         margin-top: 40px;
+         animation: slideInFromTop 1s ease-in;
          }
+         }
+
          /* add icon at the bottom right corner for link to tax rates info source*/
          .icon-block {
          position: absolute;
@@ -212,9 +228,11 @@
          }
       </style>
    </head>
-   <div class="showcase">
+   <div class="showcase icon-block">
       <div class="container grid">
          @{body}
       </div>
+      <div class="showcase-text">
+         <p>© Developed by Chris Gauci <img src="" alt="Chris Gauci's Linkedin profile"> | 2022</p>
    </div>
 </html>
