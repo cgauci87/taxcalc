@@ -11,9 +11,15 @@
       <!-- add icon link -->
       <link rel = "icon" href = "https://raw.githubusercontent.com/cgauci87/taxcalc/771ccce64da1dfc9707943b470229e0174883f9d/assets/images/calc_icon.svg" type = "image/x-icon">
       <style>
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         }
+
          /*add background to the body*/
          body {
-         font-family: Arial;
+         font-family: sans-serif;
          background-image: url("https://raw.githubusercontent.com/cgauci87/taxcalc/main/assets/images/calc_background.webp");
          background-color: rgba(18, 42, 49, 1);
          background-blend-mode: multiply;
@@ -26,41 +32,12 @@
          height: 100vh;
          width: 100%;
          }
-         /*add grid to ensure responsiveness*/
-         .grid {
+         /*add grid to ensure responsiveness */
+         .showcase .grid {
          overflow: visible;
          grid-template-columns: 55% auto;
          gap: 30px;
          }
-
-            /*----------footer--------------*/
-         footer {
-	      position: relative;
-	      width: 100%;
-	      background: rgba(182, 223, 235, 1);
-	      min-height: 100px;
-	      padding: 20px 50px;
-	      display: flex;
-	      justify-content: center;
-	      align-items: center;
-	      flex-direction: column;
-	      margin:0%;
-	      z-index: 20;
-         }
-
-         footer p {
-         font-size: small;
-         color: black;
-         }
-         
-         /* Tablets and under */
-         @media (max-width: 768px) {
-         .grid {
-         grid-template-columns: 1fr;
-         grid-template-rows: 1fr;
-         }
-      }
-
          /* add icon at the bottom right corner for link to tax rates info source*/
          .icon-block {
          position: absolute;
@@ -73,6 +50,30 @@
          #source-icon {
          width: 50px;
          height: 60px;
+         }
+         footer{
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         background: #111;
+         height: auto;
+         width: 100vw;
+         padding-top: 40px;
+         color: #fff;
+         }
+         .footer-content{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         text-align: center;
+         }
+         .footer-content p{
+         max-width: 500px;
+         margin: 10px auto;
+         font-size: 14px;
+         color: #cacdd2;
          }
          /**
          * Default styles for xterm.js
@@ -209,12 +210,12 @@
          }
       </style>
    </head>
-   <div class="icon-block">
       <div class="container grid">
-         @{body}
+          @{body}
       </div>
-   </div>
    <footer>
-      <p>© Developed by Chris Gauci | 2022 <img src="https://raw.githubusercontent.com/cgauci87/taxcalc/32fa935d883067fd53263bdd7243efdf1cb73061/assets/images/linkedin_icon.svg" width="20px" alt="Chris Gauci's Linkedin profile">/p>
+      <div class="footer-content">
+         <p>©2022 | Developed by Chris Gauci | <img src="https://raw.githubusercontent.com/cgauci87/taxcalc/32fa935d883067fd53263bdd7243efdf1cb73061/assets/images/linkedin_icon.svg" width="20px" alt="Chris Gauci's Linkedin profile">/p>
+     </div>
    </footer>
 </html>
