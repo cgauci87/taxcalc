@@ -27,58 +27,39 @@
          width: 100%;
          }
          /*add grid to ensure responsiveness*/
-         .showcase .grid {
+         .grid {
          overflow: visible;
          grid-template-columns: 55% auto;
          gap: 30px;
          }
-         /* Showcase */
-         .showcase {
-         height: 400px;
-         background-color: var(--primary-color);
-         color: #fff;
-         position: relative;
-         }
-         .showcase::before,
-         .showcase::after {
-         content: '';
-         position: absolute;
-         height: 100px;
-         bottom: -200px;
-         right: 0;
-         left: 0;
-         background: #fff;
-         transform: skewY(-3deg);
-         -webkit-transform: skewY(-3deg);
-         -moz-transform: skewY(-3deg);
-         -ms-transform: skewY(-3deg);
+
+            /*----------footer--------------*/
+         footer {
+	      position: relative;
+	      width: 100%;
+	      background: rgba(182, 223, 235, 1);
+	      min-height: 100px;
+	      padding: 20px 50px;
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      flex-direction: column;
+	      margin:0%;
+	      z-index: 20;
          }
 
-         .showcase-text {
-          animation: slideInFromLeft 1s ease-in;
-         }
-
-         .showcase p {
-          margin: 20px 0;
-          font-size: medium;
+         footer p {
+         font-size: small;
+         color: black;
          }
          
          /* Tablets and under */
          @media (max-width: 768px) {
-         .grid,
-         .showcase .grid {
+         .grid {
          grid-template-columns: 1fr;
          grid-template-rows: 1fr;
          }
-         .showcase {
-         height: auto;
-         }
-         .showcase-text {
-         text-align: center;
-         margin-top: 40px;
-         animation: slideInFromTop 1s ease-in;
-         }
-         }
+      }
 
          /* add icon at the bottom right corner for link to tax rates info source*/
          .icon-block {
@@ -228,11 +209,12 @@
          }
       </style>
    </head>
-   <div class="showcase icon-block">
+   <div class="icon-block">
       <div class="container grid">
          @{body}
       </div>
-      <div class="showcase-text">
-         <p>© Developed by Chris Gauci <img src="https://raw.githubusercontent.com/cgauci87/taxcalc/32fa935d883067fd53263bdd7243efdf1cb73061/assets/images/linkedin_icon.svg" width="30px" alt="Chris Gauci's Linkedin profile"> | 2022</p>
    </div>
+   <footer>
+      <p>© Developed by Chris Gauci | 2022 <img src="https://raw.githubusercontent.com/cgauci87/taxcalc/32fa935d883067fd53263bdd7243efdf1cb73061/assets/images/linkedin_icon.svg" width="20px" alt="Chris Gauci's Linkedin profile">/p>
+   </footer>
 </html>
