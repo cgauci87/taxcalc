@@ -32,6 +32,38 @@
          grid-template-columns: 55% auto;
          gap: 30px;
          }
+         /* Showcase */
+         .showcase {
+         height: 400px;
+         background-color: var(--primary-color);
+         color: #fff;
+         position: relative;
+         }
+         .showcase::before,
+         .showcase::after {
+         content: '';
+         position: absolute;
+         height: 100px;
+         bottom: -70px;
+         right: 0;
+         left: 0;
+         background: #fff;
+         transform: skewY(-3deg);
+         -webkit-transform: skewY(-3deg);
+         -moz-transform: skewY(-3deg);
+         -ms-transform: skewY(-3deg);
+         }
+         /* Tablets and under */
+         @media (max-width: 768px) {
+         .grid,
+         .showcase .grid {
+         grid-template-columns: 1fr;
+         grid-template-rows: 1fr;
+         }
+         .showcase {
+         height: auto;
+         }
+         }
          /* add icon at the bottom right corner for link to tax rates info source*/
          .icon-block {
          position: absolute;
@@ -41,7 +73,6 @@
          .icon-block:hover {
          right: 5px;
          }
-
          #source-icon {
          width: 50px;
          height: 60px;
@@ -181,9 +212,9 @@
          }
       </style>
    </head>
-   <section class="showcase">
-   <div class="container grid">
-      @{body}
+   <div class="showcase">
+      <div class="container grid">
+         @{body}
+      </div>
    </div>
-   </section>
 </html>
