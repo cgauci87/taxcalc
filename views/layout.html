@@ -11,11 +11,9 @@
       <!-- add icon link -->
       <link rel = "icon" href = "https://raw.githubusercontent.com/cgauci87/taxcalc/771ccce64da1dfc9707943b470229e0174883f9d/assets/images/calc_icon.svg" type = "image/x-icon">
       <style>
+         /*add background to the body*/
          body {
          font-family: Arial;
-         }
-         /* add background */
-         #bg-img {
          background-image: url("https://raw.githubusercontent.com/cgauci87/taxcalc/main/assets/images/calc_background.webp");
          background-color: rgba(18, 42, 49, 1);
          background-blend-mode: multiply;
@@ -27,6 +25,12 @@
          z-index: -10;
          height: 100vh;
          width: 100%;
+         }
+         /*add grid to ensure responsiveness*/
+         .showcase .grid {
+         overflow: visible;
+         grid-template-columns: 55% auto;
+         gap: 30px;
          }
          /* add icon at the bottom right corner for link to tax rates info source*/
          .icon-block {
@@ -177,7 +181,9 @@
          }
       </style>
    </head>
-   <div id="bg-img">
+   <section class="showcase">
+   <div class="container grid">
       @{body}
    </div>
+   </section>
 </html>
