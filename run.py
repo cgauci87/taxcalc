@@ -198,9 +198,9 @@ class ParentTaxCalculator(TaxCalculator):
             tabulate(
                 data,
                 headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
+                    "Weekly",
+                    "Monthly",
+                    "Yearly",
                 ],
             )
         )
@@ -225,9 +225,9 @@ class ParentTaxCalculator(TaxCalculator):
                 tabulate(
                     data,
                     headers=[
-                        "Weekly Net Income",
-                        "Monthly Net Income",
-                        "Yearly Net Income",
+                        "Weekly",
+                        "Monthly",
+                        "Yearly",
                     ],
                 ),
                 "\n",
@@ -313,9 +313,9 @@ class MarriedTaxCalculator(TaxCalculator):
             tabulate(
                 data,
                 headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
+                    "Weekly",
+                    "Monthly",
+                    "Yearly",
                 ],
             )
         )
@@ -340,9 +340,9 @@ class MarriedTaxCalculator(TaxCalculator):
                 tabulate(
                     data,
                     headers=[
-                        "Weekly Net Income",
-                        "Monthly Net Income",
-                        "Yearly Net Income",
+                        "Weekly",
+                        "Monthly",
+                        "Yearly",
                     ],
                 ),
                 "\n",
@@ -428,9 +428,9 @@ class SingleTaxCalculator(TaxCalculator):
             tabulate(
                 data,
                 headers=[
-                    "Weekly Net Income",
-                    "Monthly Net Income",
-                    "Yearly Net Income",
+                    "Weekly",
+                    "Monthly",
+                    "Yearly",
                 ],
             )
         )
@@ -455,9 +455,9 @@ class SingleTaxCalculator(TaxCalculator):
                 tabulate(
                     data,
                     headers=[
-                        "Weekly Net Income",
-                        "Monthly Net Income",
-                        "Yearly Net Income",
+                        "Weekly",
+                        "Monthly",
+                        "Yearly",
                     ],
                 ),
                 "\n",
