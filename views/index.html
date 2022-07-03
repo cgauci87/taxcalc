@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <div class="row my-custom-row justify-content-start align-items-center">
          <button onclick="window.location.reload()">Run Program</button>
+            <!-- terminal - command line interface terminal -->
             <div id="terminal" class="show terminal">
             </div>
         </div>
@@ -11,7 +12,8 @@
         <div class="panel panel-default">
             <div class="panel-footer">
              <p>©2022 | Developed by Chris Gauci | <a href="https://www.linkedin.com/in/chrisgauci87/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a></p>
-            <a href="https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx" target="_blank" rel="noopener noreferrer" 
+            <!-- icon with hyperlink to information/sources -->
+             <a href="https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx" target="_blank" rel="noopener noreferrer" 
             class="icon-block"><img id="source-icon" src="https://raw.githubusercontent.com/cgauci87/taxcalc/ba95e649b410e7bf3a2c1443e467e2a37695bd49/assets/images/source_icon.svg" 
             alt="Salary info source"></a>
              </div>
@@ -21,6 +23,7 @@
     
 
     <script>
+         // terminal script
         var term = new Terminal({
             cols: 80,
             rows: 24
@@ -42,6 +45,8 @@
         // Set focus in the terminal
         document.getElementsByClassName("xterm-helper-textarea")[0].focus();
     </script>
+    
+    <!-- bootstrap js scripts -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
