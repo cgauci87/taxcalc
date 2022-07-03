@@ -1,0 +1,14 @@
+
+// media query for medium devices
+@include media-breakpoint-down(md) {
+    .terminal {
+      display: block;
+    }
+  }
+
+  // media query for small devices
+@include media-breakpoint-down(sm) {
+    .terminal {
+      display: block;
+    }
+  }
