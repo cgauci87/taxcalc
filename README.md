@@ -20,7 +20,7 @@ User Stories:
 - As a user, I want to be able to input my salary gross amount to calculate net income.
 - As a user, I want to be able to see Weekly Net Income, Monthly Net Income, and Yearly Net Income.
 - As a user, I want to be able to see the government bonus/COLA included.
-- As a user, I want to be able to have the option to re-calculate any other salary.
+- As a user, I want to be able to have the option to re-calculate any other salary and view historic data.
 
 ### Structure
 ![Flowchart of Python logic](assets/images/flowchart.png)
@@ -63,6 +63,16 @@ The features included in this app are the following:
 
 
 ---
+## Data Model
+* I used Python API for Google Sheets - gspread - to store and retrieve the user's data. Every time a user calculates a salary, this information is stored in the spreadsheet.
+
+* All these are done, on one page of the spreadsheet. If the user choose the option to calculate another salary, cumulative historical data will be displayed upon each salary calculation.
+
+* Once the user terminates the program, any data stored will be cleared. This procedure will be also effective once the user run the program to ensure that data is clear.
+
+    ![Image of the google spreadsheet that I used](/readme-images/spreadsheet_image.png)
+
+--
 ## Technologies Used
 
 I have used several technologies that have enabled this design to work:
