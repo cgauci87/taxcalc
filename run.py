@@ -621,46 +621,49 @@ def calculations():
         # show the results in a table from google sheet
         instance.display_google_sheet_data()
 
-        # Want to continue?
-        continue_input = str(
-            input("Would you like to calculate another salary?(Y/N):")
-        ).upper()
-        if not is_valid_input(continue_input, "YN"):
-            print("Invalid input! Please try again, by either type Y or N.")
-        if continue_input == "N":
-            # terminate the program - thank you message
-            print(
-                "\n\t\t\t*************************************************\n"
-                "\n\t\t\t****Thank you for using Malta Tax Calculator!****\n"
-                "\n\t\t\t*************************************************\n"
-                "\n\t\t\t*************************************************\n"
-            )
-            # clear the selected cell ranges to empty historical data
-            salaries.batch_clear(
-                [
-                    "A2:A1007",
-                    "B2:B1007",
-                    "C2:C1007",
-                    "D2:D1007",
-                    "E2:E1007",
-                    "F2:F1007",
-                    "G2:G1007",
-                    "H2:H1007",
-                    "I2:I1007",
-                    "J2:I1007",
-                    "K2:I1007",
-                    "L2:L1007",
-                    "M2:M1007",
-                ]
-            )
-            return
-        else:
-            # continue the program
-            print("\n\n\n\n")
-            main()
+
+def ask_continue():
+    continue_input = str(
+        input("Would you like to calculate another salary?(Y/N):")
+    ).upper()
+    if continue_input == "N":
+        # terminate the program - thank you message
+        print(
+            "\n\t\t\t*************************************************\n"
+            "\n\t\t\t****Thank you for using Malta Tax Calculator!****\n"
+            "\n\t\t\t*************************************************\n"
+            "\n\t\t\t*************************************************\n"
+        )
+        # clear the selected cell ranges to empty historical data
+        salaries.batch_clear(
+            [
+                "A2:A1007",
+                "B2:B1007",
+                "C2:C1007",
+                "D2:D1007",
+                "E2:E1007",
+                "F2:F1007",
+                "G2:G1007",
+                "H2:H1007",
+                "I2:I1007",
+                "J2:I1007",
+                "K2:I1007",
+                "L2:L1007",
+                "M2:M1007",
+            ]
+        )
+        return
+    elif continue_input == "Y":
+        print("\n\n\n\n")
+        main()
     else:
-        # if there is an unexpected error in the input
-        print("Oops! Something went wrong..")
+        print(
+            "\n\t\t\tInvalid input!\n"
+            "\n\t\t\tPlease try again..\n"
+            "\n\t\t\tIf you are a student - Type Y"
+            "\n\t\t\tOtherwise - Type N"
+        )
+        ask_continue()
 
 
 # functions used in main
@@ -673,6 +676,7 @@ def main():
     ask_income()
     check_income_type()
     calculations()
+    ask_continue()
 
 
 main()
