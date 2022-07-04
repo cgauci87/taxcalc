@@ -39,6 +39,18 @@
        // Set focus in the terminal
        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
     </script>
+
+    <script>
+      //hide footer when input box is on focus
+      $(document).on('focus', 'input, textarea', function() {
+      $("div[data-role=footer]").hide();
+      });
+
+      //show footer when input is NOT on focus
+      $(document).on('blur', 'input, textarea', function() {
+      $("div[data-role=footer]").show();
+      });
+    </script>
     <!-- bootstrap js scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
