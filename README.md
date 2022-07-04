@@ -10,7 +10,7 @@ This project has been designed for educational purposes and uses the Code Instit
 ---
 ## UX
 To begin planning this project I started first with UX, designing the logic of the app, based on the user stories. 
-As this is a command-line application, there is no design features as HTML & CSS have not been used.
+As design features, I included a background and footer which blends well with the terminal.
 
 ### Strategy
 User Stories:
@@ -61,7 +61,11 @@ The features included in this app are the following:
 
 ![](assets/images/thankyou_message.png)
 
+### Information sources:
+- An icon with a link is displayed on the bottom right corner.
+- Once clicked, the user will be redirected to view the tax rates from an official source.
 
+![](assets/images/info_icon.png)
 ---
 ## Data Model
 * I used Python API for Google Sheets - gspread - to store and retrieve the user's data. Every time a user calculates a salary, this information is stored in the spreadsheet.
@@ -71,6 +75,8 @@ The features included in this app are the following:
 * Once the user terminates the program, any data stored will be cleared. This procedure will be also effective once the user run the program to ensure that data is clear.
 
     ![Image of the google spreadsheet that I used](/readme-images/spreadsheet_image.png)
+
+    ![Image of the tabular table showing cumulative historical data](/readme-images/cumulative_hd_image.png)
 
 --
 ## Technologies Used
@@ -82,6 +88,10 @@ I have used several technologies that have enabled this design to work:
     - In addition to core Python I have used the following Python module:
         - [Tabulate](https://pypi.org/project/tabulate/)
             - Used Tabulate to display table data beautifully.
+- [gspread](https://docs.gspread.org/)
+    - Used gspread as Python API for Google Sheets.
+- [Bootstrap](https://getbootstrap.com/)
+    - Used to create a responsive layout.
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
@@ -122,6 +132,15 @@ This data will be displayed in three columns, namely - Weekly Net Income, Monthl
 
 *'As a user, I want to be able to have the option to re-calculate any other salary.'*
 This user will be prompted for the said option as soon as the table is printed. Otherwise, the user can choose to terminate the app.
+
+
+## User Input Testings
+
+This project has been manually tested multiple times.
+
+* Invalid data is handled well when it is input by the user, through customized validation messages.
+
+* If users input a floating-point number as their amount - it will be rounded.
 
 
 ### Input Validation
@@ -221,9 +240,13 @@ In the Deploy tab:
 
 All of this code has been written by me, however, I have used [Stack Overflow](https://stackoverflow.com/) to help me debug my code and fix any issues that I had.
 
-[`PDB`](https://www.geeksforgeeks.org/debugging-python-code-using-breakpoint-and-pdb/) has been useful as well, to help me debug my code.
+[`PDB`](https://www.geeksforgeeks.org/debugging-python-code-using-breakpoint-and-pdb/)  has been used to debug my code.
 
 [Python Wiki](https://wiki.python.org/moin/WhileLoop) has been used throughout to assist me on while loops.
+
+[Code Beautify](https://codebeautify.org/python-formatter-beautifier) has been used to format python code.
+
+[Code Institute](https://github.com/Code-Institute-Org/python-essentials-template) used the terminal function and template for the deployable application.
 
 ---
 ## Acknowledgements
