@@ -8,7 +8,7 @@
        </div>
     </div>
     <footer>
-       <div class="footer-content">
+       <div class="footer-content ui-footer-fixed ">
           <p>©2022 | Developed by Chris Gauci | <a href="https://www.linkedin.com/in/chrisgauci87/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a></p>
           <a href="https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx" target="_blank" rel="noopener noreferrer" 
              class="icon-block"><img id="source-icon" src="https://raw.githubusercontent.com/cgauci87/taxcalc/ba95e649b410e7bf3a2c1443e467e2a37695bd49/assets/images/source_icon.svg" 
@@ -40,17 +40,22 @@
        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
     </script>
 
-    <script>
-      //hide footer when input box is on focus
-      $(document).on('focus', 'input, textarea', function() {
-      $("div[data-role=footer]").hide();
-      });
+   <script type="text/javascript">
+      // hide footer when keyboard on mobile/tablet devices is invoked
+      var win = $(window),
+       height = win.height(),
+       width = win.width();
 
-      //show footer when input is NOT on focus
-      $(document).on('blur', 'input, textarea', function() {
-      $("div[data-role=footer]").show();
-      });
-    </script>
+      document.write([
+          "<style>",
+         ".ui-footer-fixed { visibility: hidden; }",
+         "@media screen and (orientation: portrait) and (min-height: " + (Math.max(width, height) - 10) + "px)",
+         "{ .ui-footer-fixed { visibility: visible; } }",
+         "@media screen and (orientation: landscape) and (min-height: " + (Math.min(width, height) - 30) + "px)",
+         "{ .ui-footer-fixed { visibility: visible; } }",
+         "</style>"
+      ].join(" "));
+   </script>
     <!-- bootstrap js scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
