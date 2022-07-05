@@ -1,4 +1,4 @@
-# Malta Salary Calculator
+# Malta Tax Calculator
 
 ![](assets/images/mockup.png)
 
@@ -74,9 +74,12 @@ The features included in this app are the following:
 
 * Once the user terminates the program, any data stored will be cleared. This procedure will be also effective once the user run the program to ensure that data is clear.
 
-    ![Image of the google spreadsheet that I used](/readme-images/spreadsheet_image.png)
+    ![Image of the google spreadsheet that I used](/readme-images/taxcalc_user_data.png)
 
-    ![Image of the tabular table showing cumulative historical data](/readme-images/cumulative_hd_image.png)
+    ![Image of the tabular table showing salary breakdown in terminal](/readme-images/display_salary_breakdown.png)
+
+    ![1 - Image of the tabular table showing cumulative historical data in terminal](/readme-images/historical_data_1.png)
+    ![2 - Image of the tabular table showing cumulative historical data in terminal](/readme-images/historical_data_2.png)
 
 --
 ## Technologies Used
@@ -134,7 +137,7 @@ This data will be displayed in three columns, namely - Weekly Net Income, Monthl
 This user will be prompted for the said option as soon as the table is printed. Otherwise, the user can choose to terminate the app.
 
 
-## User Input Testings
+## User Input Testing
 
 This project has been manually tested multiple times.
 
@@ -240,9 +243,11 @@ In the Deploy tab:
 
 All of this code has been written by me, however, I have used [Stack Overflow](https://stackoverflow.com/) to help me debug my code and fix any issues that I had.
 
-[`PDB`](https://www.geeksforgeeks.org/debugging-python-code-using-breakpoint-and-pdb/)  has been used to debug my code.
+[PDB](https://www.geeksforgeeks.org/debugging-python-code-using-breakpoint-and-pdb/)  has been used to debug my code.
 
 [Python Wiki](https://wiki.python.org/moin/WhileLoop) has been used throughout to assist me on while loops.
+
+[cfr.gov.mt](https://cfr.gov.mt/en/rates/Pages/TaxRates/Tax-Rates-2022.aspx) has been used as an information source of Tax Rates 2022 (Malta).
 
 [Code Beautify](https://codebeautify.org/python-formatter-beautifier) has been used to format python code.
 
