@@ -74,12 +74,12 @@ The features included in this app are the following:
 
 * Once the user terminates the program, any data stored will be cleared. This procedure will be also effective once the user run the program to ensure that data is clear.
 
-    ![Image of the google spreadsheet that I used](/readme-images/taxcalc_user_data.png)
+    ![Image of the google spreadsheet that I used](assets/images/taxcalc_user_data.png)
 
-    ![Image of the tabular table showing salary breakdown in terminal](/readme-images/display_salary_breakdown.png)
+    ![Image of the tabular table showing salary breakdown in terminal](assets/images/display_salary_breakdown.png)
 
-    ![1 - Image of the tabular table showing cumulative historical data in terminal](/readme-images/historical_data_1.png)
-    ![2 - Image of the tabular table showing cumulative historical data in terminal](/readme-images/historical_data_2.png)
+    ![1 - Image of the tabular table showing cumulative historical data in terminal](assets/images/historical_data_1.png)
+    ![2 - Image of the tabular table showing cumulative historical data in terminal](assets/images/historical_data_2.png)
 
 --
 ## Technologies Used
