@@ -501,6 +501,7 @@ salaries.batch_clear(
 def ask_name():
     global user_name
     user_name = str(input("Enter name: ")).capitalize()
+    # input validation
     if not validate_name(user_name):
         print(
             "\n\t\t\tInvalid input!\n"
@@ -513,6 +514,7 @@ def ask_name():
 def studies_status():
     # ask the user for the student status
     is_student = str(input("Are you a Student ? (Y/N): ")).upper()
+    # input validation
     if not is_valid_input(is_student, "YN"):
         print(
             "\n\t\t\tInvalid input!\n"
@@ -527,6 +529,7 @@ def ask_age():
     global is_over_18_years
     # ask the user for the age over 18
     is_over_18_years = str(input("Are you over 18 ? (Y/N): ")).upper()
+    # input validation
     if not is_valid_input(is_over_18_years, "YN"):
         print(
             "\n\t\t\tInvalid input!\n"
@@ -556,6 +559,7 @@ def check_civil_status():
     global civil_status
     # ask the user for the civil status
     civil_status = str(input("Single, Married or Parent ? (S/M/P): ")).upper()
+    # input validation
     if not is_valid_input(civil_status, "SMP"):
         print(
             "\n\t\t\tInvalid input!\n"
@@ -573,6 +577,7 @@ def ask_income():
     # ask the user for the income
     try:
         income = float(input("Enter your income ? (Input amount): "))
+    # input validation
     except ValueError:
         print(
             "\n\t\t\tInvalid input!\n"
@@ -656,12 +661,13 @@ def ask_continue():
     elif continue_input == "Y":
         print("\n\n\n\n")
         main()
+    # income value validation
     else:
         print(
             "\n\t\t\tInvalid input!\n"
             "\n\t\t\tPlease try again..\n"
-            "\n\t\t\tIf you are a student - Type Y"
-            "\n\t\t\tOtherwise - Type N"
+            "\n\t\t\tIf you would like to calculate another salary - Type Y"
+            "\n\t\t\tOtherwise - Type N to exit"
         )
         ask_continue()
 
