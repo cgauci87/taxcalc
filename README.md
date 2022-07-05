@@ -153,11 +153,11 @@ As this app relies heavily on users inputting information, validating these valu
 The method `is_valid_input` is used to check if the input is valid; Either it is Y/N (for yes/no) OR SMP (for single/married/parent)
 
 ![](assets/images/is_valid_input.png)
-![](assets/images/is_valid_input_example.png)
+![](assets/images/is_valid_input_code.png)
 
 The method `validate_name` is used to scan a number and special character.
 ![](assets/images/validate_name.png)
-![](assets/images/validate_name_example.png)
+![](assets/images/validate_name_code.png)
 
 
 
